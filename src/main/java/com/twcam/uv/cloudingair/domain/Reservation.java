@@ -1,0 +1,43 @@
+package com.twcam.uv.cloudingair.domain;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Entity
+@Data
+@AllArgsConstructor
+@Table(name = "reservation")
+public class Reservation {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private int id;
+
+  @Column(name = "reservation_date")
+  private LocalDate reservationDate;
+
+  @Column(name = "price")
+  private Float price;
+
+  @Column(name = "paid")
+  private Boolean paid;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "outbound_flight")
+  private Flight outboundFlight;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "return_flight")
+  private Flight returnFlight;
+}
