@@ -1,4 +1,4 @@
-SET FOREIGN_KEY_CHECKS=0;
+SET FOREIGN_KEY_CHECKS = 0;
 
 CREATE TABLE IF NOT EXISTS passenger(
 	id INT AUTO_INCREMENT,
@@ -87,13 +87,9 @@ CREATE TABLE IF NOT EXISTS reservation_passenger(
   checked_in BOOLEAN DEFAULT FALSE,
   priority_boarding BOOLEAN DEFAULT FALSE,
   bag_number INT(2),
-  -- CONSTRAINT pk_id PRIMARY KEY(reservation_id, passenger_id),
   CONSTRAINT fk_reservation_id FOREIGN KEY (reservation_id) REFERENCES reservation(id),
-  CONSTRAINT fk_passenger_id FOREIGN KEY (passenger_id) REFERENCES passenger(id)
+  CONSTRAINT fk_passenger_id FOREIGN KEY (passenger_id) REFERENCES passenger(id),
+	CONSTRAINT fk_seat_id FOREIGN KEY (seat_id) REFERENCES seat(id)
 );
 
-SET FOREIGN_KEY_CHECKS=1;
-
-
-
-
+SET FOREIGN_KEY_CHECKS = 1;
