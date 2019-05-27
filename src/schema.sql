@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS agency(
 	id INT AUTO_INCREMENT,
 	first_name VARCHAR(30),
 	last_name VARCHAR(30),
-	passwor VARCHAR(30),
+	password VARCHAR(30),
 	username VARCHAR(30),
 	CONSTRAINT fk_id_agency PRIMARY KEY (id)
 );
