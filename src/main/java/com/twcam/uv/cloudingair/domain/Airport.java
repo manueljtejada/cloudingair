@@ -26,7 +26,7 @@ public class Airport {
   @Size(max = 4)
   private String ident;
 
-  @Column(name = "type_airport")
+  @Column(name = "airport_type")
   @Size(max = 30)
   private String typeAirport;
 
@@ -65,9 +65,13 @@ public class Airport {
   @Size(max = 4)
   private String localCode;
 
-  @Column(name = "latitude")
-  private Float latitude;
+  // TODO buscar una mejor forma de almacenar las coordenadas
+  @Column
+  private String coordinates;
 
-  @Column(name = "longitude")
-  private Float longitude;
+  // @Column(name = "latitude")
+  // private Float latitude;
+
+  // @Column(name = "longitude")
+  // private Float longitude;
 }
