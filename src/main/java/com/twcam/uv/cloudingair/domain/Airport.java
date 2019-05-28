@@ -10,11 +10,13 @@ import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
-@Table(name = "airport")
+@NoArgsConstructor
+@Table(name = "airports")
 public class Airport {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

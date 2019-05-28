@@ -9,11 +9,13 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
-@Table(name = "plane")
+@NoArgsConstructor
+@Table(name = "planes")
 public class Plane {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
