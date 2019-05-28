@@ -28,9 +28,9 @@ public class Flight {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @Column(name = "number_flight")
+  @Column(name = "flight_number")
   @Size(max = 10)
-	private String numberFlight;
+	private String flightNumber;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "origin")
@@ -60,6 +60,6 @@ public class Flight {
 	private int duration;
 
   @Column(name = "company")
-  @Size(max = 30)
+  @Size(max = 120)
 	private String company;
 }
