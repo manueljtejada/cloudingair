@@ -22,11 +22,11 @@ public class CloudingairApplication implements CommandLineRunner {
 	}
 
 	public void TestConnection() {
-		Plane plane = new Plane(1, "Test", 180);
-		planeRepository.save(plane);
+		// Plane plane = new Plane(1, "Test", 180);
+		// planeRepository.save(plane);
 
-		List<Plane> planes = planeRepository.findAll();
-		planes.forEach(p -> System.out.println(p.getModel()));
+		// List<Plane> planes = planeRepository.findAll();
+		// planes.forEach(p -> System.out.println(p.getModel()));
 	}
 
 	@Override
