@@ -27,7 +27,7 @@ public class Airport {
   private String ident;
 
   @Column(name = "airport_type")
-  @Size(max = 30)
+  @Size(max = 200)
   private String typeAirport;
 
   @Column(name = "airport_name")
@@ -37,12 +37,12 @@ public class Airport {
   @Column(name = "elevation_ft")
   private int elevationFt;
 
-  @Column(name = "continent")
-  @Size(max = 100)
+  @Column(name = "iso_country")
+  @Size(max = 20)
   private String continent;
 
   @Column(name = "iso_country")
-  @Size(max = 100)
+  @Size(max = 20)
   private String isoCountry;
 
   @Column(name = "iso_region")
@@ -50,15 +50,15 @@ public class Airport {
   private String isoRegion;
 
   @Column(name = "municipality")
-  @Size(max = 100)
+  @Size(max = 200)
   private String municipality;
 
   @Column(name = "gps_code")
-  @Size(max = 4)
+  @Size(max = 40)
   private String gpsCode;
 
   @Column(name = "iata_code")
-  @Size(max = 10)
+  @Size(max = 100)
   private String iataCode;
 
   @Column(name = "local_code")
