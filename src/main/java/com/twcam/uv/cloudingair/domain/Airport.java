@@ -23,7 +23,7 @@ public class Airport {
   private int id;
 
   @Column(name = "ident")
-  @Size(max = 4)
+  @Size(max = 100)
   private String ident;
 
   @Column(name = "airport_type")
@@ -31,26 +31,26 @@ public class Airport {
   private String typeAirport;
 
   @Column(name = "airport_name")
-  @Size(max = 30)
+  @Size(max = 200)
   private String airportName;
 
   @Column(name = "elevation_ft")
   private int elevationFt;
 
   @Column(name = "continent")
-  @Size(max = 2)
+  @Size(max = 100)
   private String continent;
 
   @Column(name = "iso_country")
-  @Size(max = 2)
+  @Size(max = 100)
   private String isoCountry;
 
   @Column(name = "iso_region")
-  @Size(max = 5)
+  @Size(max = 100)
   private String isoRegion;
 
   @Column(name = "municipality")
-  @Size(max = 30)
+  @Size(max = 100)
   private String municipality;
 
   @Column(name = "gps_code")
@@ -62,7 +62,7 @@ public class Airport {
   private String iataCode;
 
   @Column(name = "local_code")
-  @Size(max = 4)
+  @Size(max = 100)
   private String localCode;
 
   // TODO buscar una mejor forma de almacenar las coordenadas
