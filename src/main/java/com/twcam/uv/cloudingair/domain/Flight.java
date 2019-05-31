@@ -3,6 +3,7 @@ package com.twcam.uv.cloudingair.domain;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -70,6 +71,6 @@ public class Flight {
 
   @Column(name = "company")
   @Size(max = 120)
-	private String company; 
-  
+	private String company;
+
 }

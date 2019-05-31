@@ -15,10 +15,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
 
-  @Query("select f from Flight f where f.origin = :origin and f.destination = :destination")
+  @Query("SELECT f FROM Flight f WHERE f.origin = :origin AND f.destination = :destination AND f.departureDate = DATE(:date)")
   public List<Flight> findFlights(
     @Param("origin") Airport origin,
-    @Param("destination") Airport destination
+    @Param("destination") Airport destination,
+    @Param("date") String date
   );
   
   
