@@ -4,7 +4,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -14,6 +16,7 @@ import com.twcam.uv.cloudingair.domain.Plane;
 import com.twcam.uv.cloudingair.repository.AirportRepository;
 import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PlaneRepository;
+import com.twcam.uv.cloudingair.service.FlightService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,6 +29,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 public class CloudingairApplication implements CommandLineRunner {
 	@Autowired
 	private FlightRepository flightRepository;
+
+	@Autowired
+	private FlightService flightService;
 
 	@Autowired
 	private AirportRepository airportRepository;
@@ -49,12 +55,17 @@ public class CloudingairApplication implements CommandLineRunner {
 		Airport origin = airportRepository.findById(3164).get();
 		Airport destination = airportRepository.findById(4130).get();
 		LocalDate date = LocalDate.of(2019, 10, 05);
-		String departureDate = date.toString();
+		String outboundDate = date.toString();
 
-		List<Flight> flights = flightRepository.findFlights(origin, destination, departureDate);
-		System.out.println("departure date: " + departureDate);
+		LocalDate date2 = LocalDate.of(2019, 10, 10);
+		String returnDate = date2.toString();
+
+		Map<String, List<Flight>> flights = flightService.findFlights(origin, destination, outboundDate, returnDate, true, 4);
+
 		System.out.println("Found flights" + flights.size());
-		System.out.println("Flights found: " + flights.stream().map(flight -> flight.getId()).collect(Collectors.toList()));
+		System.out.println("Outbound flights" + flights.get("outbound").stream().map(flight -> flight.getId()).collect(Collectors.toList()));
+		System.out.println("Return flights" + flights.get("return").stream().map(flight -> flight.getId()).collect(Collectors.toList()));
+		// System.out.println("Flights found: " + flights.stream().map(flight -> flight.getId()).collect(Collectors.toList()));
 	}
 
 }
