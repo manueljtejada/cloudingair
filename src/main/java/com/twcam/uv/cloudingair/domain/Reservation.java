@@ -48,4 +48,7 @@ public class Reservation {
 
   @OneToMany(mappedBy = "reservation", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   private List<ReservationPassenger> passengers;
+
+  @ManyToOne
+  private Agency agency;
 }

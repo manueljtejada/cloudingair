@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.Passenger;
@@ -89,14 +90,18 @@ public class CloudingairApplication implements CommandLineRunner {
 
 		ReservationPassenger ticket = new ReservationPassenger();
 		List<ReservationPassenger> tickets = new ArrayList<ReservationPassenger>();
-		tickets.add(ticket);
 
 		ticket.setCheckedIn(false);
 		ticket.setPriorityBoarding(false);
 		ticket.setBagNumber(2);
 		ticket.setPassenger(passenger1);
+		ticket.setSeat(seat);
 
-		Reservation reservation = new Reservation(1, LocalDate.of(2019, 10, 10), 200f, false, of, rf, tickets);
+		tickets.add(ticket);
+
+		Agency agency = new Agency(1, "agency1", "123456", null);
+
+		Reservation reservation = new Reservation(1, LocalDate.of(2019, 10, 10), 200f, false, of, rf, tickets, agency);
 		reservationRepository.save(reservation);
 		reservationRepository.pay(reservation.getId());
 	}

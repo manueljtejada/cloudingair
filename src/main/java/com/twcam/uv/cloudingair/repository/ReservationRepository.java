@@ -16,4 +16,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   @Modifying
   @Query("UPDATE Reservation r SET r.paid = True WHERE r.id = :reservationId")
   public void pay(@Param("reservationId") int reservationId);
+
+  // @Query()
+  // public List<Reservation> get
 }
