@@ -28,4 +28,8 @@ public class ReservationPassenger {
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "seat")
   private Seat seat;
+  
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "passenger")
+  private Passenger passenger;
 }

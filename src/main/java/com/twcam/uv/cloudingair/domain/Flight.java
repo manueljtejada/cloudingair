@@ -1,5 +1,6 @@
 package com.twcam.uv.cloudingair.domain;
 
+import java.util.Date;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +34,7 @@ public class Flight {
   private int id;
 
   @Column(name = "flight_number")
-  @Size(max = 10)
+  @Size(max = 100)
 	private String flightNumber;
 
   @ManyToOne(fetch = FetchType.LAZY)
@@ -50,7 +53,8 @@ public class Flight {
 	private LocalDate reservationStartDate;
 
   @Column(name = "departure_date")
-	private LocalDate departureDate;
+  @Temporal(TemporalType.DATE)
+	private Date departureDate;
 
   @Column(name = "boarding_time")
 	private LocalTime boardingTime;
@@ -60,6 +64,9 @@ public class Flight {
 
   @Column(name = "duration")
 	private int duration;
+  
+  @Column(name = "price")
+  private float price;
 
   @Column(name = "company")
   @Size(max = 120)

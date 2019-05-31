@@ -37,7 +37,7 @@ public class Airport {
   @Column(name = "elevation_ft")
   private int elevationFt;
 
-  @Column(name = "iso_country")
+  @Column(name = "continent")
   @Size(max = 20)
   private String continent;
 

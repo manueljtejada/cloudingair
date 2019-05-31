@@ -1,5 +1,7 @@
 package com.twcam.uv.cloudingair.repository;
 
+
+import java.sql.Date;
 import java.util.List;
 
 import com.twcam.uv.cloudingair.domain.Airport;
@@ -18,5 +20,8 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
     @Param("origin") Airport origin,
     @Param("destination") Airport destination
   );
+  
+  
+  public List<Flight> findByDepartureDateBetweenOrderByPrice(Date date1, Date date2);
 
 }
