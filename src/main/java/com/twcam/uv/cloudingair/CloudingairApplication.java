@@ -86,7 +86,7 @@ public class CloudingairApplication implements CommandLineRunner {
 		Flight of = flightRepository.findById(1).get();
 		Flight rf = flightRepository.findById(2).get();
 
-		Seat seat = new Seat(1, 2, 3);
+		Seat seat = new Seat(1, 2, "A");
 
 		ReservationPassenger ticket = new ReservationPassenger();
 		List<ReservationPassenger> tickets = new ArrayList<ReservationPassenger>();
@@ -104,6 +104,8 @@ public class CloudingairApplication implements CommandLineRunner {
 		Reservation reservation = new Reservation(1, LocalDate.of(2019, 10, 10), 200f, false, of, rf, tickets, agency);
 		reservationRepository.save(reservation);
 		reservationRepository.pay(reservation.getId());
+
+		List<Flight> pastFlights = reservationRepository.getFutureReservations(agency);
 	}
 
 }

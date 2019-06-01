@@ -42,7 +42,7 @@ public class ReservationPassenger {
   @JoinColumn(name = "reservation")
   private Reservation reservation;
 
-  
+
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   private Passenger passenger;
 }
