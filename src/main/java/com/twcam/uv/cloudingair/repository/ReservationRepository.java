@@ -1,7 +1,10 @@
 package com.twcam.uv.cloudingair.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Reservation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,6 +20,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   @Query("UPDATE Reservation r SET r.paid = True WHERE r.id = :reservationId")
   public void pay(@Param("reservationId") int reservationId);
 
-  // @Query()
-  // public List<Reservation> get
+  @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r")
+  public void getPastReservations();
+
+  @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r WHERE r.outboundFlight.departureDate > NOW() AND r.agency = :agency")
+  public void getFutureReservations(@Param("agency") Agency agency);
 }
