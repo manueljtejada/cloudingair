@@ -106,15 +106,20 @@ public class CloudingairApplication implements CommandLineRunner {
 		ticket.setPassenger(passenger1);
 		ticket.setSeat(seat);
 
-		tickets.add(ticket);
-
 		Agency agency = new Agency(1, "agency1", "123456", null);
 
 		Reservation reservation = new Reservation(1, LocalDate.of(2019, 10, 10), 200f, false, of, rf, tickets, agency);
+		ticket.setReservation(reservation);
+
+		tickets.add(ticket);
 		reservationRepository.save(reservation);
 		reservationRepository.pay(reservation.getId());
 
 		List<Flight> pastFlights = reservationRepository.getFutureReservations(agency);
+
+		List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
+
+		System.out.println("Q4: " + boardingTickets.size());
 	}
 
 }

@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.Reservation;
+import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -28,4 +29,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   /* Q3.2 */
   @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate < NOW()")
   public List<Flight> getFutureReservations(@Param("agency") Agency agency);
+
+  /* Q4 */
+  @Query("SELECT r.passengers FROM Reservation r WHERE r.id = :reservationId AND r.agency = :agency AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
+  public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
 }
