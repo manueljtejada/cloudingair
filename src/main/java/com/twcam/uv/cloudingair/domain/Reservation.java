@@ -3,6 +3,7 @@ package com.twcam.uv.cloudingair.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,8 +35,8 @@ public class Reservation {
   @Column(name = "price")
   private Float price;
 
-  @Column(name = "paid")
-  private Boolean paid;
+  @Column(name = "paid", nullable = false)
+  private boolean paid = false;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "outbound_flight")
@@ -45,7 +46,9 @@ public class Reservation {
   @JoinColumn(name = "return_flight")
   private Flight returnFlight;
 
-  @OneToMany(fetch = FetchType.LAZY)
-  @JoinColumn(name = "reservation_id")
+  @OneToMany(mappedBy = "reservation", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   private List<ReservationPassenger> passengers;
+
+  @ManyToOne
+  private Agency agency;
 }

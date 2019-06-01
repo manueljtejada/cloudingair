@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -11,12 +12,18 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
+import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Plane;
+import com.twcam.uv.cloudingair.domain.Reservation;
+import com.twcam.uv.cloudingair.domain.ReservationPassenger;
+import com.twcam.uv.cloudingair.domain.Seat;
 import com.twcam.uv.cloudingair.repository.AirportRepository;
 import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PlaneRepository;
+import com.twcam.uv.cloudingair.repository.ReservationRepository;
 import com.twcam.uv.cloudingair.service.FlightService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +41,7 @@ import com.twcam.uv.cloudingair.repository.ReservationRepository;
 @SpringBootApplication
 @EntityScan("com.twcam.uv.cloudingair")
 public class CloudingairApplication implements CommandLineRunner {
-	
+
 	@Autowired
 	private FlightRepository flightRepository;
 
@@ -44,6 +51,8 @@ public class CloudingairApplication implements CommandLineRunner {
 	@Autowired
 	private AirportRepository airportRepository;
 
+	@Autowired
+	private ReservationRepository reservationRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudingairApplication.class, args);
@@ -62,6 +71,7 @@ public class CloudingairApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		// Q1
 		Airport origin = airportRepository.findById(3164).get();
 		Airport destination = airportRepository.findById(4130).get();
 		LocalDate date = LocalDate.of(2019, 10, 05);
@@ -75,8 +85,36 @@ public class CloudingairApplication implements CommandLineRunner {
 		System.out.println("Found flights" + flights.size());
 		System.out.println("Outbound flights" + flights.get("outbound").stream().map(flight -> flight.getId()).collect(Collectors.toList()));
 		System.out.println("Return flights" + flights.get("return").stream().map(flight -> flight.getId()).collect(Collectors.toList()));
-		// System.out.println("Flights found: " + flights.stream().map(flight -> flight.getId()).collect(Collectors.toList()));
 
+		// Q3
+		Passenger passenger1 = new Passenger(1, "Manuel", "Tejada", "123456", "RD12345");
+
+		List<Passenger> passengers = new ArrayList<Passenger>();
+		passengers.add(passenger1);
+
+		Flight of = flightRepository.findById(1).get();
+		Flight rf = flightRepository.findById(2).get();
+
+		Seat seat = new Seat(1, 2, "A");
+
+		ReservationPassenger ticket = new ReservationPassenger();
+		List<ReservationPassenger> tickets = new ArrayList<ReservationPassenger>();
+
+		ticket.setCheckedIn(false);
+		ticket.setPriorityBoarding(false);
+		ticket.setBagNumber(2);
+		ticket.setPassenger(passenger1);
+		ticket.setSeat(seat);
+
+		tickets.add(ticket);
+
+		Agency agency = new Agency(1, "agency1", "123456", null);
+
+		Reservation reservation = new Reservation(1, LocalDate.of(2019, 10, 10), 200f, false, of, rf, tickets, agency);
+		reservationRepository.save(reservation);
+		reservationRepository.pay(reservation.getId());
+
+		List<Flight> pastFlights = reservationRepository.getFutureReservations(agency);
 	}
 
 }
