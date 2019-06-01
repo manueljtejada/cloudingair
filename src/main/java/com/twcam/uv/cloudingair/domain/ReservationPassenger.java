@@ -34,7 +34,7 @@ public class ReservationPassenger {
   @Column(name = "bag_number")
   private int bagNumber;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   @JoinColumn(name = "seat")
   private Seat seat;
 
