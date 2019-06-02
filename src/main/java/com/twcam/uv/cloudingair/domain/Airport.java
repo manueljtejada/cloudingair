@@ -34,8 +34,8 @@ public class Airport {
   @Size(max = 200)
   private String airportName;
 
-  @Column(name = "elevation_ft")
-  private int elevationFt;
+  @Column(nullable = true, name = "elevation_ft")
+  private Integer elevationFt;
 
   @Column(name = "continent")
   @Size(max = 20)
@@ -57,7 +57,7 @@ public class Airport {
   @Size(max = 40)
   private String gpsCode;
 
-  @Column(name = "iata_code")
+  @Column(name = "iata_code", nullable = true)
   @Size(max = 100)
   private String iataCode;
 
