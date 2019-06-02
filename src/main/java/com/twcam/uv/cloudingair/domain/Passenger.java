@@ -31,7 +31,7 @@ public class Passenger {
 	private String lastName;
 
   @Column(name = "dni")
-  @Size(max = 10)
+  @Size(max = 30)
 	private String dni;
 
   @Column(name = "passport")
