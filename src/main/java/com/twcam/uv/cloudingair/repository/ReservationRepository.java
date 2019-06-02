@@ -84,10 +84,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   public List<Airport> findTop10Destinations(Pageable pageable, @Param("date") Date date);
 
   /* Q8 */
-
 	@Query("SELECT new com.twcam.uv.cloudingair.domain.MonthlyProfit(MONTH(r.reservationDate), YEAR(r.reservationDate), SUM(r.price)) " +
 			"FROM Reservation r " +
-      "WHERE r.reservationDate BETWEEN :startDate AND :endDate " +
+      "WHERE r.reservationDate BETWEEN :endDate AND :startDate " +
 			"GROUP BY YEAR(r.reservationDate), MONTH(r.reservationDate) " +
 			"ORDER BY YEAR(r.reservationDate), MONTH(r.reservationDate) DESC")
 	public List<MonthlyProfit> getMonthlyProfits(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
