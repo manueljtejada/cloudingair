@@ -23,6 +23,7 @@ import com.twcam.uv.cloudingair.domain.Seat;
 import com.twcam.uv.cloudingair.repository.AirportRepository;
 import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PlaneRepository;
+import com.twcam.uv.cloudingair.repository.ReservationPassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationRepository;
 import com.twcam.uv.cloudingair.service.FlightService;
 import com.twcam.uv.cloudingair.service.ReservationService;
@@ -59,6 +60,9 @@ public class CloudingairApplication implements CommandLineRunner {
 
 	@Autowired
 	private ReservationService reservationService;
+
+	@Autowired
+	private ReservationPassengerRepository reservationPassengerReposistory;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudingairApplication.class, args);
