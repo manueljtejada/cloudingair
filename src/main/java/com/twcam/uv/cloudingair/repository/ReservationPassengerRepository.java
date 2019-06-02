@@ -1,5 +1,6 @@
 package com.twcam.uv.cloudingair.repository;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 @Transactional
 @Repository
 public interface ReservationPassengerRepository extends JpaRepository<ReservationPassenger, Integer> {
+	/* Q6 */
 	@Query("SELECT r.passenger "
 			+ "FROM ReservationPassenger r "
 			+ "WHERE r.priorityBoarding = true "

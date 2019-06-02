@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
+import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Plane;
 import com.twcam.uv.cloudingair.domain.Reservation;
@@ -149,6 +150,10 @@ public class CloudingairApplication implements CommandLineRunner {
 		Pageable top10 = PageRequest.of(0, 10);
 		List<Airport> topDest = reservationRepository.findTop10Destinations(top10, resDate);
 		topDest.forEach(a -> System.out.println(a.getAirportName()));
+
+		// Q8
+		List<MonthlyProfit> mp = reservationService.getMonthlyProfits(LocalDate.of(2019, 06, 01));
+		mp.forEach(m -> System.out.println(m.getMonth() + " " + m.getYear() + " " + m.getProfits()));
 	}
 
 }

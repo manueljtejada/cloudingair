@@ -1,11 +1,13 @@
 package com.twcam.uv.cloudingair.service;
 
-import com.twcam.uv.cloudingair.domain.Airport;
-import com.twcam.uv.cloudingair.domain.Flight;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
+import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
-import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationPassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationRepository;
@@ -31,5 +33,11 @@ public class ReservationService {
     ticketToUpdate.setPassenger(newPassenger);
     ticketRepository.save(ticketToUpdate);
   }
+
+  public List<MonthlyProfit> getMonthlyProfits(LocalDate date) {
+    Date startDate = java.sql.Date.valueOf(date);
+    Date endDate = java.sql.Date.valueOf(date.minusMonths(6));
+		return reservationRepository.getMonthlyProfits(startDate, endDate);
+	}
 
 }

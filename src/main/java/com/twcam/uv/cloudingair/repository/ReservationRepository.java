@@ -3,11 +3,16 @@ package com.twcam.uv.cloudingair.repository;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
 import javax.transaction.Transactional;
 
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
+import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 
@@ -77,4 +82,13 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   /* Q7 */
   @Query("SELECT r.outboundFlight.destination FROM Reservation r WHERE r.outboundFlight.departureDate BETWEEN '2019-01-31' AND :date GROUP BY (r.outboundFlight.destination) ORDER BY SUM(r.price) DESC")
   public List<Airport> findTop10Destinations(Pageable pageable, @Param("date") Date date);
+
+  /* Q8 */
+
+	@Query("SELECT new com.twcam.uv.cloudingair.domain.MonthlyProfit(MONTH(r.reservationDate), YEAR(r.reservationDate), SUM(r.price)) " +
+			"FROM Reservation r " +
+      "WHERE r.reservationDate BETWEEN :startDate AND :endDate " +
+			"GROUP BY YEAR(r.reservationDate), MONTH(r.reservationDate) " +
+			"ORDER BY YEAR(r.reservationDate), MONTH(r.reservationDate) DESC")
+	public List<MonthlyProfit> getMonthlyProfits(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

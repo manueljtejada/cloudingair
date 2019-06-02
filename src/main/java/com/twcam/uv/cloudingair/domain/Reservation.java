@@ -13,13 +13,41 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.SqlResultSetMapping;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+// @NamedNativeQuery(
+// name = "Reservation.getMonthlyProjects",
+// query = "SELECT MONTH(reservation_date), YEAR(reservation_date), SUM(price)"
+//   + "FROM reservations "
+//   + "WHERE reservation_date BETWEEN DATE_SUB(NOW(), INTERVAL 6 MONTH) AND NOW() "
+//   + "GROUP BY YEAR(reservation_date), MONTH(reservation_date) "
+//   + "ORDER BY YEAR(reservation_date), MONTH(reservation_date) DESC "
+// )
+
+// @SqlResultSetMapping(
+// name = "getMonthlyProjects",
+// classes = {
+//   @ConstructorResult(
+//     targetClass = MonthlyProfit.class,
+//     columns = {
+//       @ColumnResult(name="month", type = Integer.class),
+//       @ColumnResult(name="year", type = Integer.class),
+//       @ColumnResult(name="profits", type = Double.class)
+//     }
+//   )
+// })
 @Entity
 @Data
 @AllArgsConstructor
@@ -31,6 +59,7 @@ public class Reservation {
   private int id;
 
   @Column(name = "reservation_date")
+  @Temporal(TemporalType.DATE)
   private Date reservationDate;
 
   @Column(name = "price")
