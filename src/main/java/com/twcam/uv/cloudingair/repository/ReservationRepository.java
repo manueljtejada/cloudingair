@@ -26,14 +26,48 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   // @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate < NOW() OR r.returnFlight.departureDate < NOW()")
   // public List<Flight> getPastReservations(@Param("agency") Agency agency);
 
-  @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r CASE WHEN (r.outboundFlight.departureDate < NOW()) THEN \'Past\' WHEN (r.outboundFlight.departureDate > NOW()) THEN \'Future\' (WHEN r.returnFlight.departureDate < NOW()) THEN \'Past\' WHEN (r.returnFlight.departureDate > NOW()) THEN \'Future\' END status WHERE r.agency = :agency")
-  public List<Flight> getPastReservations(@Param("agency") Agency agency);
+
+
+//	@Query("SELECT r.outboundFlight, r.returnFlight, "
+//	+ "CASE "
+//	+ "WHEN DATEDIFF(now(), r.outboundFlight.departureDate) <= 0 THEN 'Past' "
+//	+ "WHEN DATEDIFF(now(), r.outboundFlight.departureDate) >= 0 THEN 'Future' "
+//	+ "WHEN DATEDIFF(now(), r.returnFlight.departureDate) <= 0 THEN 'Past' "
+//	+ "WHEN DATEDIFF(now(), r.returnFlight.departureDate) >= 0 THEN 'Future' "
+//	+ "END "
+//	+ "FROM Reservation r "
+//	+ "WHERE r.agency = :agency")
+
+
+  @Query(value ="SELECT of.id, of.boarding_time, of.company, of.departure_date, "
+  		+ "of.departure_time, of.duration, of.flight_number, of.price, "
+  		+ "of.reservation_start_date, of.destination, of.origin, of.plane "
+  		+ "FROM reservations r1 "
+  		+ "INNER JOIN flights as of "
+  		+ "ON of.id = r1.outbound_flight "
+  		+ "WHERE of.departure_date < now() "
+  		+ "AND r1.agency_id = :agency "
+  		+ "UNION "
+  		+ "SELECT rf.id, rf.boarding_time, rf.company, rf.departure_date, "
+  		  		+ "rf.departure_time, rf.duration, rf.flight_number, rf.price, "
+  		  		+ "rf.reservation_start_date, rf.destination, rf.origin, rf.plane "
+  		+ "FROM reservations r2 "
+  		+ "INNER JOIN flights as rf "
+  		+ "ON rf.id = r2.return_flight "
+  		+ "WHERE rf.departure_date < now() "
+  		+ "AND r2.agency_id = :agency"
+  		, nativeQuery = true )
+  public List<Flight> getPastReservations(@Param("agency") int agency);
 
   /* Q3.2 */
   // @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate > NOW()")
   // public List<Flight> getFutureReservations(@Param("agency") Agency agency);
 
   /* Q4 */
-  @Query("SELECT r.passengers FROM Reservation r WHERE r.id = :reservationId AND r.agency = :agency AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
+  @Query("SELECT r.passengers"
+  		+ " FROM Reservation r "
+  		+ "WHERE r.id = :reservationId"
+  		+ " AND r.agency = :agency"
+  		+ " AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
   public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
 }

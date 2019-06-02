@@ -121,10 +121,9 @@ public class CloudingairApplication implements CommandLineRunner {
 
 		// List<Flight> futureFlights = reservationRepository.getFutureReservations(agency);
 
-		// List<Flight> pastFlights = reservationRepository.getPastReservations(agency);
+		List<Flight> pastFlights = reservationRepository.getPastReservations(agency.getId());
 
 		// List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
-
 
 		flightRepository.cancelFlight(1);
 		// System.out.println("Q3: ");
