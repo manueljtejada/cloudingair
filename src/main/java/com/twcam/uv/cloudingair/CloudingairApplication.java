@@ -23,6 +23,7 @@ import com.twcam.uv.cloudingair.domain.Seat;
 import com.twcam.uv.cloudingair.repository.AirportRepository;
 import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PlaneRepository;
+import com.twcam.uv.cloudingair.repository.ReservationPassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationRepository;
 import com.twcam.uv.cloudingair.service.FlightService;
 import com.twcam.uv.cloudingair.service.ReservationService;
@@ -57,6 +58,9 @@ public class CloudingairApplication implements CommandLineRunner {
 
 	@Autowired
 	private ReservationService reservationService;
+	
+	@Autowired
+	private ReservationPassengerRepository reservationPassengerReposistory;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudingairApplication.class, args);
@@ -121,7 +125,7 @@ public class CloudingairApplication implements CommandLineRunner {
 
 		// List<Flight> futureFlights = reservationRepository.getFutureReservations(agency);
 
-		List<Flight> pastFlights = reservationRepository.getPastReservations(agency.getId());
+		// List<Flight> pastFlights = reservationRepository.getPastReservations(agency.getId());
 
 		// List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
 
@@ -132,6 +136,10 @@ public class CloudingairApplication implements CommandLineRunner {
 		// Q5.2
 		Passenger newPassenger = new Passenger(2, "Pasajero", "Nuevo", "o2143421", "218412");
 		reservationService.changeReservationPassenger(1, 1, newPassenger);
+		
+		//Q6
+		List<Passenger> priorityPassenger = reservationPassengerReposistory.getCountPriority();
+		priorityPassenger.forEach(p -> p.getLastName());
 	}
 
 }

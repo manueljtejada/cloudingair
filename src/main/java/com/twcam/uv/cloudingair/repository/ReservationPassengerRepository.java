@@ -19,4 +19,10 @@ import org.springframework.stereotype.Repository;
 @Transactional
 @Repository
 public interface ReservationPassengerRepository extends JpaRepository<ReservationPassenger, Integer> {
+	@Query("SELECT r.passenger "
+			+ "FROM ReservationPassenger r "
+			+ "WHERE r.priorityBoarding = true "
+			+ "GROUP BY r.passenger.id "
+			+ "HAVING COUNT (r.passenger.id) > 2")
+	public List<Passenger> getCountPriority();
 }
