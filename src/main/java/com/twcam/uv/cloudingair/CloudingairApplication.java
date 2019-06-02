@@ -141,6 +141,10 @@ public class CloudingairApplication implements CommandLineRunner {
 		// Passenger newPassenger = new Passenger(2, "Pasajero", "Nuevo", "o2143421", "218412");
 		// reservationService.changeReservationPassenger(1, 1, newPassenger);
 
+		// Q6
+		List<Passenger> priorityPassengers = reservationPassengerReposistory.getCountPriority();
+		priorityPassengers.forEach(p -> System.out.println(p.getFirstName() + " " + p.getLastName()));
+
 		// Q7
 		Pageable top10 = PageRequest.of(0, 10);
 		List<Airport> topDest = reservationRepository.findTop10Destinations(top10, resDate);
