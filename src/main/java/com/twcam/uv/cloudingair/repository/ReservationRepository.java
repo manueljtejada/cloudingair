@@ -23,12 +23,15 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   public void pay(@Param("reservationId") int reservationId);
 
   /* Q3.1 */
-  @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate < NOW()")
+  // @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate < NOW() OR r.returnFlight.departureDate < NOW()")
+  // public List<Flight> getPastReservations(@Param("agency") Agency agency);
+
+  @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r CASE WHEN (r.outboundFlight.departureDate < NOW()) THEN \'Past\' WHEN (r.outboundFlight.departureDate > NOW()) THEN \'Future\' (WHEN r.returnFlight.departureDate < NOW()) THEN \'Past\' WHEN (r.returnFlight.departureDate > NOW()) THEN \'Future\' END status WHERE r.agency = :agency")
   public List<Flight> getPastReservations(@Param("agency") Agency agency);
 
   /* Q3.2 */
-  @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate < NOW()")
-  public List<Flight> getFutureReservations(@Param("agency") Agency agency);
+  // @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate > NOW()")
+  // public List<Flight> getFutureReservations(@Param("agency") Agency agency);
 
   /* Q4 */
   @Query("SELECT r.passengers FROM Reservation r WHERE r.id = :reservationId AND r.agency = :agency AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")

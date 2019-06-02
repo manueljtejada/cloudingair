@@ -92,8 +92,8 @@ public class CloudingairApplication implements CommandLineRunner {
 		List<Passenger> passengers = new ArrayList<Passenger>();
 		passengers.add(passenger1);
 
-		Flight of = flightRepository.findById(1).get();
-		Flight rf = flightRepository.findById(2).get();
+		Flight of = flightRepository.findById(3).get();
+		Flight rf = flightRepository.findById(4).get();
 
 		Seat seat = new Seat(1, 2, "A");
 
@@ -115,11 +115,16 @@ public class CloudingairApplication implements CommandLineRunner {
 		reservationRepository.save(reservation);
 		reservationRepository.pay(reservation.getId());
 
-		List<Flight> pastFlights = reservationRepository.getFutureReservations(agency);
+		// List<Flight> futureFlights = reservationRepository.getFutureReservations(agency);
 
-		List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
+		List<Flight> pastFlights = reservationRepository.getPastReservations(agency);
 
-		System.out.println("Q4: " + boardingTickets.size());
+		// List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
+
+
+
+		// System.out.println("Q3: ");
+		pastFlights.forEach(f -> System.out.println(f.getId() + " " + f.getFlightNumber() + " " + f.getDepartureDate()));
 	}
 
 }
