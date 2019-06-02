@@ -1,6 +1,7 @@
 package com.twcam.uv.cloudingair.domain;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,7 +31,7 @@ public class Reservation {
   private int id;
 
   @Column(name = "reservation_date")
-  private LocalDate reservationDate;
+  private Date reservationDate;
 
   @Column(name = "price")
   private Float price;
