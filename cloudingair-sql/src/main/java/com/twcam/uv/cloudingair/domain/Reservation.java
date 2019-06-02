@@ -1,6 +1,5 @@
 package com.twcam.uv.cloudingair.domain;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -13,15 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.ColumnResult;
-import javax.persistence.ConstructorResult;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.SqlResultSetMapping;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
