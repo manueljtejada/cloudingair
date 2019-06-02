@@ -65,12 +65,15 @@ public class Flight {
 
   @Column(name = "duration")
 	private int duration;
-  
+
   @Column(name = "price")
   private float price;
 
   @Column(name = "company")
   @Size(max = 120)
 	private String company;
+
+  @Column(name = "cancelled", nullable = true)
+  private boolean cancelled = false;
 
 }

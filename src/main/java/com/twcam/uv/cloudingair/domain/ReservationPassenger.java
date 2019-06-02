@@ -42,6 +42,6 @@ public class ReservationPassenger {
   private Reservation reservation;
 
 
-  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
   private Passenger passenger;
 }

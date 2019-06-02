@@ -25,6 +25,7 @@ import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PlaneRepository;
 import com.twcam.uv.cloudingair.repository.ReservationRepository;
 import com.twcam.uv.cloudingair.service.FlightService;
+import com.twcam.uv.cloudingair.service.ReservationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -53,6 +54,9 @@ public class CloudingairApplication implements CommandLineRunner {
 
 	@Autowired
 	private ReservationRepository reservationRepository;
+
+	@Autowired
+	private ReservationService reservationService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CloudingairApplication.class, args);
@@ -117,14 +121,18 @@ public class CloudingairApplication implements CommandLineRunner {
 
 		// List<Flight> futureFlights = reservationRepository.getFutureReservations(agency);
 
-		List<Flight> pastFlights = reservationRepository.getPastReservations(agency);
+		// List<Flight> pastFlights = reservationRepository.getPastReservations(agency);
 
 		// List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
 
 
-
+		flightRepository.cancelFlight(1);
 		// System.out.println("Q3: ");
-		pastFlights.forEach(f -> System.out.println(f.getId() + " " + f.getFlightNumber() + " " + f.getDepartureDate()));
+		// pastFlights.forEach(f -> System.out.println(f.getId() + " " + f.getFlightNumber() + " " + f.getDepartureDate()));
+
+		// Q5.2
+		Passenger newPassenger = new Passenger(2, "Pasajero", "Nuevo", "o2143421", "218412");
+		reservationService.changeReservationPassenger(1, 1, newPassenger);
 	}
 
 }

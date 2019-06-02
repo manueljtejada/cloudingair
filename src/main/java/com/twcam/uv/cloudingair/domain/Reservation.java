@@ -46,7 +46,7 @@ public class Reservation {
   @JoinColumn(name = "return_flight")
   private Flight returnFlight;
 
-  @OneToMany(mappedBy = "reservation", cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+  @OneToMany(mappedBy = "reservation", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
   private List<ReservationPassenger> passengers;
 
   @ManyToOne
