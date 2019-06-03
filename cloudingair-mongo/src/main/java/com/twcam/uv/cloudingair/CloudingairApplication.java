@@ -26,11 +26,11 @@ public class CloudingairApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Boarding boarding = new Boarding (1, LocalDateTime.now(), "22A", 56);
-		boardingRepository.save(boarding);
-		
-		List<Boarding> boardingList = boardingRepository.findById(boarding.getId());
-		boardingList.forEach(l -> System.out.println(l));
+//		Boarding boarding = new Boarding (1, LocalDateTime.now(), "22A", 56);
+//		boardingRepository.save(boarding);
+//		
+//		List<Boarding> boardingList = boardingRepository.findById(boarding.getId());
+//		boardingList.forEach(l -> System.out.println(l));
 		
 
 	}
