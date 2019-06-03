@@ -1,5 +1,6 @@
 package com.twcam.uv.cloudingair.domain;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Store {
   @Id
-  private int id;
+  private ObjectId id;
 
   private String name;
+
+  public Store(String name) {
+    this.name = name;
+  }
 }

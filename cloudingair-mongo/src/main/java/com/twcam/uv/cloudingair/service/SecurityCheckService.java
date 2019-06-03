@@ -27,7 +27,7 @@ public class SecurityCheckService {
 
     // Si no existe lo creamos y guardamos en la base de datos
     if (ticket == null) {
-      ticket = new Ticket(ticketId, null, null, null);
+      ticket = new Ticket(ticketId);
       ticketRepository.save(ticket);
     }
 
