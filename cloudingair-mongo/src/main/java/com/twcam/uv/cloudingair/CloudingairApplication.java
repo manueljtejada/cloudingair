@@ -1,8 +1,7 @@
 package com.twcam.uv.cloudingair;
 
 import java.time.LocalDateTime;
-
-import com.twcam.uv.cloudingair.domain.Boarding;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -29,6 +28,9 @@ public class CloudingairApplication implements CommandLineRunner{
 
 		Boarding boarding = new Boarding (1, LocalDateTime.now(), "22A", 56);
 		boardingRepository.save(boarding);
+		
+		List<Boarding> boardingList = boardingRepository.findById(boarding.getId());
+		boardingList.forEach(l -> System.out.println(l));
 		
 
 	}
