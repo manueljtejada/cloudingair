@@ -3,18 +3,19 @@ package com.twcam.uv.cloudingair.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.twcam.uv.cloudingair.repository.BoardingRepository;
 
 import com.twcam.uv.cloudingair.domain.Boarding;
 
-
+@Service
 public class BoardingService {
 	
 	@Autowired
 	private BoardingRepository boardingRepository;
 	
-	public List<Boarding> findAllBoarding() {
+	public List<Boarding> findAllBoardings() {
 		return boardingRepository.findAll();
 	}
 
@@ -27,6 +28,5 @@ public class BoardingService {
 	public Boarding finBoardingById (int id) {
 		return boardingRepository.findById(id);
 	}
-	
 	
 }
