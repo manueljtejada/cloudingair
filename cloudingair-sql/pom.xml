@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.twcam.uv</groupId>
-	<artifactId>cloudingairairports</artifactId>
+	<artifactId>cloudingair-reservations</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cloudingair</name>
 	<description>Gestión de reserva de vuelos</description>
