@@ -2,6 +2,8 @@ package com.twcam.uv.cloudingair;
 
 import java.time.LocalDateTime;
 
+import com.twcam.uv.cloudingair.domain.Boarding;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.twcam.uv.cloudingair.domain.Boarding;
 import com.twcam.uv.cloudingair.repository.BoardingRepository;
+
 
 @SpringBootApplication
 public class CloudingairApplication implements CommandLineRunner{
@@ -23,9 +26,11 @@ public class CloudingairApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+
 		Boarding boarding = new Boarding (1, LocalDateTime.now(), "22A", 56);
 		boardingRepository.save(boarding);
 		
+
 	}
 
 }
