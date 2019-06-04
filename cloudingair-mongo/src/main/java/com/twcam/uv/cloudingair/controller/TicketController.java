@@ -2,23 +2,48 @@ package com.twcam.uv.cloudingair.controller;
 
 import java.util.List;
 
+import com.twcam.uv.cloudingair.domain.Boarding;
+import com.twcam.uv.cloudingair.domain.Purchase;
+import com.twcam.uv.cloudingair.domain.SecurityCheck;
 import com.twcam.uv.cloudingair.domain.Ticket;
-import com.twcam.uv.cloudingair.repository.TicketRepository;
+import com.twcam.uv.cloudingair.service.TicketService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/tickets/")
+@RequestMapping("/api/tickets")
 public class TicketController {
   @Autowired
-  TicketRepository repository;
+  TicketService service;
 
 	@GetMapping()
-  public List<Ticket> getAll() {
-    return repository.findAll();
+  public List<Ticket> getAllTickets() {
+    return service.findAll();
   }
 
+  @GetMapping("/{ticketId}")
+  public Ticket getTicket(@PathVariable int ticketId) {
+    return service.findById(ticketId);
+  }
+
+  @PutMapping("/{ticketId}/security")
+  public Ticket registerSecurityCheck(@PathVariable int ticketId, @RequestBody SecurityCheck securityCheck) {
+    return service.registerSecurityCheck(ticketId, securityCheck);
+  }
+
+  @PutMapping("/{ticketId}/boarding")
+  public Ticket registerBoarding(@PathVariable int ticketId, @RequestBody Boarding boarding) {
+    return service.registerBoarding(ticketId, boarding);
+  }
+
+  @PutMapping("/{ticketId}/shopping/{storeId}")
+  public Ticket registerPurchase(@PathVariable int ticketId, @PathVariable String storeId, @RequestBody Purchase purchase) {
+    return service.registerPurchase(ticketId, storeId, purchase);
+  }
 }

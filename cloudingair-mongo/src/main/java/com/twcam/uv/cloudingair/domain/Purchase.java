@@ -1,6 +1,7 @@
 package com.twcam.uv.cloudingair.domain;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -18,13 +19,13 @@ public class Purchase {
 
   private LocalDate date;
 
-  private Ticket ticket;
+  private LocalTime time;
 
   private Store store;
 
   private float amount;
 
-  public Purchase(float amount) {
+  public Purchase(Store store, float amount) {
     this.amount = amount;
   }
 }

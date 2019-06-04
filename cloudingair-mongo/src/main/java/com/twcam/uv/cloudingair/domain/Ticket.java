@@ -12,8 +12,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
+@NoArgsConstructor
 public class Ticket {
   @Id
   private int id;
+
+  private SecurityCheck securityCheck;
+
+  private Boarding boarding;
+
+  private List<Purchase> purchases;
+
+  public Ticket(int id) {
+    this.id = id;
+  }
+
+  public Ticket(SecurityCheck securityCheck, Boarding boarding, List<Purchase> purchases) {
+    this.securityCheck = securityCheck;
+    this.boarding = boarding;
+    this.purchases = purchases;
+  }
 }
