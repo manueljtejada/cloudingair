@@ -45,7 +45,7 @@ public class FlightService {
 	}
 	
 	// Q2
-	List<Flight> findComingFlights(Date date1) {
+	public List<Flight> findComingFlights(Date date1) {
 		LocalDate rangeDate = date1.toLocalDate();
 		Date previousThreeDays = Date.valueOf(rangeDate.plusDays(3));
 		Date nextThreeDays = Date.valueOf(rangeDate.minusDays(3));
