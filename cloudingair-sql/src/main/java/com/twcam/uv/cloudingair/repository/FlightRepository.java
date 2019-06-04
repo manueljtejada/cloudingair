@@ -18,8 +18,13 @@ import org.springframework.stereotype.Repository;
 @Transactional
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
+	
 
-  @Query("SELECT f FROM Flight f WHERE f.origin = :origin AND f.destination = :destination AND f.departureDate = DATE(:date)")
+  @Query("SELECT f "
+  		+ "FROM Flight f "
+  		+ "WHERE f.origin = :origin "
+  		+ "AND f.destination = :destination "
+  		+ "AND f.departureDate = DATE(:date)")
   public List<Flight> findFlights(
     @Param("origin") Airport origin,
     @Param("destination") Airport destination,

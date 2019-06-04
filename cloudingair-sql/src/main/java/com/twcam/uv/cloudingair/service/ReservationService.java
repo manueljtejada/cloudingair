@@ -37,7 +37,7 @@ public class ReservationService {
   public List<MonthlyProfit> getMonthlyProfits(LocalDate date) {
     Date startDate = java.sql.Date.valueOf(date);
     Date endDate = java.sql.Date.valueOf(date.minusMonths(6));
-		return reservationRepository.getMonthlyProfits(startDate, endDate);
-	}
+	return reservationRepository.getMonthlyProfits(startDate, endDate);
+  }
 
 }
