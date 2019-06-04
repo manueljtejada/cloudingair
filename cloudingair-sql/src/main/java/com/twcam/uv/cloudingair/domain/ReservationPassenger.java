@@ -1,5 +1,7 @@
 package com.twcam.uv.cloudingair.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +25,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "reservation_passengers")
-public class ReservationPassenger {
+public class ReservationPassenger implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
@@ -36,12 +43,14 @@ public class ReservationPassenger {
 
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   @JoinColumn(name = "seat")
+  @JsonIgnore
   private Seat seat;
 
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+  @JsonIgnore
   private Reservation reservation;
 
-
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
+  @JsonIgnore
   private Passenger passenger;
 }

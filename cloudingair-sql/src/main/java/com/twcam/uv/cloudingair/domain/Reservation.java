@@ -1,5 +1,6 @@
 package com.twcam.uv.cloudingair.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -49,8 +51,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "reservations")
-// @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Reservation {
+public class Reservation implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
@@ -67,15 +71,19 @@ public class Reservation {
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "outbound_flight")
+  @JsonIgnore
   private Flight outboundFlight;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "return_flight")
+  @JsonIgnore
   private Flight returnFlight;
 
   @OneToMany(mappedBy = "reservation", cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
+  @JsonIgnore
   private List<ReservationPassenger> passengers;
 
   @ManyToOne
+  @JsonIgnore
   private Agency agency;
 }
