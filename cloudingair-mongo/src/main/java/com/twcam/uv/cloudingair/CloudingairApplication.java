@@ -10,19 +10,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.twcam.uv.cloudingair.domain.Boarding;
 import com.twcam.uv.cloudingair.domain.Store;
+import com.twcam.uv.cloudingair.domain.Ticket;
 import com.twcam.uv.cloudingair.repository.BoardingRepository;
 import com.twcam.uv.cloudingair.repository.PurchaseRepository;
 import com.twcam.uv.cloudingair.repository.StoreRepository;
+import com.twcam.uv.cloudingair.repository.TicketRepository;
 
 
 @SpringBootApplication
 public class CloudingairApplication implements CommandLineRunner{
-
-	@Autowired
-	private BoardingRepository boardingRepository;
-
 	@Autowired
 	private StoreRepository storeRepository;
+
+	@Autowired
+	private TicketRepository ticketRepository;
 
 
 	public static void main(String[] args) {
@@ -43,6 +44,11 @@ public class CloudingairApplication implements CommandLineRunner{
 		storeRepository.save(store3);
 		storeRepository.save(store4);
 		storeRepository.save(store5);
+
+		for (int i = 1; i <= 301; i++) {
+			Ticket ticket = new Ticket(i);
+			ticketRepository.save(ticket);
+		}
 
 //		Boarding boarding = new Boarding (1, LocalDateTime.now(), "22A", 56);
 //		boardingRepository.save(boarding);
