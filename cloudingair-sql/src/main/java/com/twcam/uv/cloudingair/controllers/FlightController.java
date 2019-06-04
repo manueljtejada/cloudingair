@@ -1,11 +1,13 @@
 package com.twcam.uv.cloudingair.controllers;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +39,12 @@ public class FlightController {
 		Map<String, List<Flight>>flights = flightService.findFlights(originA, destinationA, outboundDate, returnDate, roundTrip, totalPassenger);
 		
 		return flights;
+	}
+	
+	@GetMapping("/alternatives")
+	public List<Flight> findAlternativeFlights(@RequestParam("date") String date){
+		Date comingDate = Date.valueOf(date);
+		List<Flight> comingFlights = flightService.findComingFlights(comingDate);
+		return comingFlights;
 	}
 }
