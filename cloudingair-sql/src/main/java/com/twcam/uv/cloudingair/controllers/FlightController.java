@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
-import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.service.AirportService;
 import com.twcam.uv.cloudingair.service.FlightService;
 
@@ -29,19 +28,14 @@ public class FlightController {
 	@GetMapping
 	public Map<String, List<Flight>> findAllFlightsAvailable(
 			@RequestParam int origin, @RequestParam int destination, 
-			@RequestParam String outboundDate,@RequestParam String returnDate, 
+			@RequestParam String outboundDate,
+			@RequestParam String returnDate, 
 			@RequestParam boolean roundTrip, @RequestParam int totalPassenger)
 	{
 		Airport originA = airportService.findAirpoirtById(origin).orElse(null);
 		Airport destinationA = airportService.findAirpoirtById(destination).orElse(null);
-		LocalDate dateA = LocalDate.of(2019,10,20);
-		String outboundDateA = dateA.toString();
-		LocalDate dateA2 = LocalDate.of(2019, 10, 10);
-		String returnDateA = dateA2.toString();
-		boolean roundTripA = roundTrip;
-		int totalPassengerA = totalPassenger;
+		Map<String, List<Flight>>flights = flightService.findFlights(originA, destinationA, outboundDate, returnDate, roundTrip, totalPassenger);
 		
-		return flightService.findFlights(originA, destinationA, outboundDateA, returnDateA, roundTripA, totalPassengerA);
-	
+		return flights;
 	}
 }
