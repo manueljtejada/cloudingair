@@ -2,6 +2,7 @@ package com.twcam.uv.cloudingair.domain;
 
 import java.time.LocalDate;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
@@ -13,11 +14,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Purchase {
   @Id
-  private int id;
+  private ObjectId id;
 
   private LocalDate date;
 
   private Ticket ticket;
 
   private Store store;
+
+  private float amount;
+
+  public Purchase(float amount) {
+    this.amount = amount;
+  }
 }
