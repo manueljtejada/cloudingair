@@ -88,10 +88,13 @@ public class ReservationService {
     ticketRepository.save(ticketToUpdate);
   }
 
-  public List<MonthlyProfit> getMonthlyProfits(LocalDate date) {
-    Date startDate = java.sql.Date.valueOf(date);
-    Date endDate = java.sql.Date.valueOf(date.minusMonths(6));
-	return reservationRepository.getMonthlyProfits(startDate, endDate);
+  public List<MonthlyProfit> getMonthlyProfits() {
+    LocalDate today = LocalDate.now();
+
+    Date startDate = java.sql.Date.valueOf(today);
+    Date endDate = java.sql.Date.valueOf(today.minusMonths(6));
+
+	  return reservationRepository.getMonthlyProfits(startDate, endDate);
   }
 
   public List<ReservationPassenger> getBoardingTicketList(int reservationId, int agencyId) {

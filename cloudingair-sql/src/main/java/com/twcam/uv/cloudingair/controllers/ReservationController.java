@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.twcam.uv.cloudingair.domain.Airport;
+import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
@@ -33,6 +34,11 @@ public class ReservationController {
 	@GetMapping("/topDestinations")
 	public List<Airport> getTop10Destinations() {
 		return reservationService.getTop10Destinations();
+	}
+
+	@GetMapping("/profits")
+	public List<MonthlyProfit> getMonthlyProfits() {
+		return reservationService.getMonthlyProfits();
 	}
 
 
