@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
+import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 import com.twcam.uv.cloudingair.service.AirportService;
 import com.twcam.uv.cloudingair.service.FlightService;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping("/api/{agencyId}/flights")
 public class FlightController {
 
 	@Autowired
@@ -57,7 +58,7 @@ public class FlightController {
 	}
 	
 	// Q3
-	@GetMapping("/{agencyId}/status")
+	@GetMapping("/status")
 	public List<Flight> findStatusFlights(@PathVariable("agencyId") int agencyId){
 		
 //		if(result.hasErrors()) {
@@ -67,6 +68,13 @@ public class FlightController {
 		List<Flight> flightStatus = reservationService.findStatusReservation(agencyId);
 //		return new ResponseEntity<>(flightStatus, HttpStatus.CREATED);
 		return flightStatus;
+	}
+	
+	@GetMapping("/{flightId}/tickets")
+	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId,
+			@PathVariable("flightId") int flightId) {
+		
+		return reservationService.getFlightBoardingTickets(flightId, agencyId);
 	}
 	
 }

@@ -14,21 +14,16 @@ import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
 @RestController
-@RequestMapping("/api/reservations")
+@RequestMapping("/api/{agencyId}/reservations")
 public class ReservationController {
 
 	@Autowired
 	private ReservationService reservationService;
 
-	@GetMapping("{agencyId}/reservations/{reservationId}/tickets")
+	@GetMapping("/{reservationId}/tickets")
 	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId) {
 		// Solo permitir acceso para la agencia que realizo la reserva
 		return reservationService.getBoardingTicketList(reservationId, agencyId);
-	}
-
-	@GetMapping("{agencyId}/flights/{flightId}/tickets")
-	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("flightId") int flightId) {
-		return reservationService.getFlightBoardingTickets(flightId, agencyId);
 	}
 
 	@GetMapping("/topDestinations")
