@@ -8,13 +8,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.twcam.uv.cloudingair.domain.Agency;
+
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
-import com.twcam.uv.cloudingair.repository.AgencyRepository;
+
 import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationPassengerRepository;
@@ -30,9 +30,10 @@ public class ReservationService {
 
   @Autowired
   PassengerRepository passengerRepository;
-  
+
   @Autowired
   private FlightRepository flightRepository;
+
   
 //  @Autowired
 //  private ReservationPassengerRepository reservationPassengerRepository;
@@ -88,6 +89,10 @@ public class ReservationService {
     Date startDate = java.sql.Date.valueOf(date);
     Date endDate = java.sql.Date.valueOf(date.minusMonths(6));
 	return reservationRepository.getMonthlyProfits(startDate, endDate);
+  }
+
+  public List<ReservationPassenger> getBoardingTicketList(int reservationId) {
+    return reservationRepository.getBoardingTickets(reservationId);
   }
 
 }
