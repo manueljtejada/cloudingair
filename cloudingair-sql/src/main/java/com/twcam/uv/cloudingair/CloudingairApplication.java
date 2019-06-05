@@ -1,29 +1,16 @@
 package com.twcam.uv.cloudingair;
 
 import java.time.LocalDate;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
-import com.twcam.uv.cloudingair.domain.Agency;
+
 import com.twcam.uv.cloudingair.domain.Airport;
-import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
-import com.twcam.uv.cloudingair.domain.Plane;
-import com.twcam.uv.cloudingair.domain.Reservation;
-import com.twcam.uv.cloudingair.domain.ReservationPassenger;
-import com.twcam.uv.cloudingair.domain.Seat;
 import com.twcam.uv.cloudingair.repository.AirportRepository;
 import com.twcam.uv.cloudingair.repository.FlightRepository;
-import com.twcam.uv.cloudingair.repository.PlaneRepository;
+
 import com.twcam.uv.cloudingair.repository.ReservationPassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationRepository;
 import com.twcam.uv.cloudingair.service.FlightService;
@@ -37,25 +24,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import com.twcam.uv.cloudingair.domain.Flight;
-import com.twcam.uv.cloudingair.domain.Reservation;
-import com.twcam.uv.cloudingair.repository.FlightRepository;
-import com.twcam.uv.cloudingair.repository.PlaneRepository;
-import com.twcam.uv.cloudingair.repository.ReservationRepository;
 
 @SpringBootApplication
 @EntityScan("com.twcam.uv.cloudingair")
 public class CloudingairApplication implements CommandLineRunner {
 
-	@Autowired
-	private FlightRepository flightRepository;
-
-	@Autowired
-	private FlightService flightService;
-
-	@Autowired
-	private AirportRepository airportRepository;
-
+	
 	@Autowired
 	private ReservationRepository reservationRepository;
 
@@ -130,7 +104,7 @@ public class CloudingairApplication implements CommandLineRunner {
 
 		// List<Flight> futureFlights = reservationRepository.getFutureReservations(agency);
 
-		// 0List<Flight> pastFlights = reservationRepository.getPastReservations(agency.getId());
+		// List<Flight> pastFlights = reservationRepository.getPastReservations(agency.getId());
 
 		// List<ReservationPassenger> boardingTickets = reservationRepository.getBoardingTickets(1, agency);
 

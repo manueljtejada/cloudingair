@@ -43,25 +43,25 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 //	+ "WHERE r.agency = :agency")
 
 
-  // @Query(value ="SELECT of.id, of.boarding_time, of.company, of.departure_date, "
-  // 		+ "of.departure_time, of.duration, of.flight_number, of.price, "
-  // 		+ "of.reservation_start_date, of.destination, of.origin, of.plane "
-  // 		+ "FROM reservations r1 "
-  // 		+ "INNER JOIN flights as of "
-  // 		+ "ON of.id = r1.outbound_flight "
-  // 		+ "WHERE of.departure_date < now() "
-  // 		+ "AND r1.agency_id = :agency "
-  // 		+ "UNION "
-  // 		+ "SELECT rf.id, rf.boarding_time, rf.company, rf.departure_date, "
-  // 		  		+ "rf.departure_time, rf.duration, rf.flight_number, rf.price, "
-  // 		  		+ "rf.reservation_start_date, rf.destination, rf.origin, rf.plane "
-  // 		+ "FROM reservations r2 "
-  // 		+ "INNER JOIN flights as rf "
-  // 		+ "ON rf.id = r2.return_flight "
-  // 		+ "WHERE rf.departure_date < now() "
-  // 		+ "AND r2.agency_id = :agency"
-  // 		, nativeQuery = true )
-  // public List<Flight> getPastReservations(@Param("agency") int agency);
+   @Query(value ="SELECT of.id, of.boarding_time, of.company, of.departure_date, "
+   		+ "of.departure_time, of.duration, of.flight_number, of.price, "
+   		+ "of.reservation_start_date, of.destination, of.origin, of.plane "
+   		+ "FROM reservations r1 "
+   		+ "INNER JOIN flights as of "
+   		+ "ON of.id = r1.outbound_flight "
+   		+ "WHERE of.departure_date < now() "
+   		+ "AND r1.agency_id = :agency "
+   		+ "UNION "
+   		+ "SELECT rf.id, rf.boarding_time, rf.company, rf.departure_date, "
+   		  		+ "rf.departure_time, rf.duration, rf.flight_number, rf.price, "
+   		  		+ "rf.reservation_start_date, rf.destination, rf.origin, rf.plane "
+   		+ "FROM reservations r2 "
+   		+ "INNER JOIN flights as rf "
+   		+ "ON rf.id = r2.return_flight "
+   		+ "WHERE rf.departure_date < now() "
+   		+ "AND r2.agency_id = :agency"
+   		, nativeQuery = true )
+   public List<Integer> getPastReservations(@Param("agency") int agency);
 
   /* Q3.2 */
   // @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate > NOW()")
