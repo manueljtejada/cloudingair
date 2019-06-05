@@ -14,6 +14,8 @@ import java.util.List;
 
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.Passenger;
+import com.twcam.uv.cloudingair.domain.Airport;
+import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
@@ -48,8 +50,17 @@ public class ReservationController {
 //		}
 		return new ResponseEntity<>(changedTicket, HttpStatus.CREATED);
 	}
-	
-	
+
+	@GetMapping("/topDestinations")
+	public List<Airport> getTop10Destinations() {
+		return reservationService.getTop10Destinations();
+	}
+
+	@GetMapping("/profits")
+	public List<MonthlyProfit> getMonthlyProfits() {
+		return reservationService.getMonthlyProfits();
+	}
+
 //	@PostMapping()
 //	public ResponseEntity<Reservation> createReservation(@RequestBody Reservation reservation, BindingResult result) {
 //		if (result.hasErrors()) {

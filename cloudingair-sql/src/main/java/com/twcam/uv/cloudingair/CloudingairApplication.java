@@ -29,7 +29,7 @@ import org.springframework.data.domain.Pageable;
 @EntityScan("com.twcam.uv.cloudingair")
 public class CloudingairApplication implements CommandLineRunner {
 
-	
+
 	@Autowired
 	private ReservationRepository reservationRepository;
 
@@ -121,13 +121,13 @@ public class CloudingairApplication implements CommandLineRunner {
 		priorityPassengers.forEach(p -> System.out.println(p.getFirstName() + " " + p.getLastName()));
 
 		// Q7
-		Pageable top10 = PageRequest.of(0, 10);
-		List<Airport> topDest = reservationRepository.findTop10Destinations(top10, resDate);
-		topDest.forEach(a -> System.out.println(a.getAirportName()));
+		// Pageable top10 = PageRequest.of(0, 10);
+		// List<Airport> topDest = reservationRepository.findTop10Destinations(top10, resDate);
+		// topDest.forEach(a -> System.out.println(a.getAirportName()));
 
 		// Q8
-		List<MonthlyProfit> mp = reservationService.getMonthlyProfits(LocalDate.of(2019, 06, 01));
-		mp.forEach(m -> System.out.println(m.getMonth() + " " + m.getYear() + " " + m.getProfits()));
+		// List<MonthlyProfit> mp = reservationService.getMonthlyProfits(LocalDate.of(2019, 06, 01));
+		// mp.forEach(m -> System.out.println(m.getMonth() + " " + m.getYear() + " " + m.getProfits()));
 	}
 
 }

@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.twcam.uv.cloudingair.domain.Agency;
+import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
@@ -89,10 +92,13 @@ public class ReservationService {
     return ticketToUpdate;
   }
 
-  public List<MonthlyProfit> getMonthlyProfits(LocalDate date) {
-    Date startDate = java.sql.Date.valueOf(date);
-    Date endDate = java.sql.Date.valueOf(date.minusMonths(6));
-	return reservationRepository.getMonthlyProfits(startDate, endDate);
+  public List<MonthlyProfit> getMonthlyProfits() {
+    LocalDate today = LocalDate.now();
+
+    Date startDate = java.sql.Date.valueOf(today);
+    Date endDate = java.sql.Date.valueOf(today.minusMonths(6));
+
+	  return reservationRepository.getMonthlyProfits(startDate, endDate);
   }
 
   public List<ReservationPassenger> getBoardingTicketList(int reservationId, int agencyId) {
@@ -103,6 +109,17 @@ public class ReservationService {
   public List<ReservationPassenger> getFlightBoardingTickets(int flightId, int agencyId) {
     Agency agency = agencyRepository.findById(agencyId).orElseGet(null);
     return reservationRepository.getFlightBoardingTickets(flightId, agency);
+  }
+
+  public List<Airport> getTop10Destinations() {
+    LocalDate today = LocalDate.now();
+    LocalDate oneMonthEarlier = today.minusMonths(1);
+
+    Pageable top10 = PageRequest.of(0, 10);
+    Date dToday = java.sql.Date.valueOf(today);
+    Date dOneMonthEarlier = java.sql.Date.valueOf(oneMonthEarlier);
+
+    return reservationRepository.findTop10Destinations(top10, dToday, dOneMonthEarlier);
   }
 
 }
