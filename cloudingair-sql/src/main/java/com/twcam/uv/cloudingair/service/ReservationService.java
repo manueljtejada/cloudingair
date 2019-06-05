@@ -8,13 +8,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
-
+import com.twcam.uv.cloudingair.repository.AgencyRepository;
 import com.twcam.uv.cloudingair.repository.FlightRepository;
 import com.twcam.uv.cloudingair.repository.PassengerRepository;
 import com.twcam.uv.cloudingair.repository.ReservationPassengerRepository;
@@ -34,16 +34,16 @@ public class ReservationService {
   @Autowired
   private FlightRepository flightRepository;
 
-  
+
 //  @Autowired
 //  private ReservationPassengerRepository reservationPassengerRepository;
-//  
-//  @Autowired
-//  private AgencyRepository agencyRepository;
-//  
+//
+ @Autowired
+ private AgencyRepository agencyRepository;
+//
 //  public Reservation create(String reservationDate, float price, boolean paid, int outboundFlight,
 //		  int returnFlight, List<Integer> passengers, int agency) {
-//	  
+//
 //	  Date resDate = Date.valueOf(LocalDate.parse(reservationDate));
 //	  Flight outAir = flightRepository.findById(outboundFlight).orElse(null);
 //	  Flight retAir = flightRepository.findById(returnFlight).orElse(null);
@@ -53,7 +53,7 @@ public class ReservationService {
 //		  ReservationPassenger rp = reservationPassengerRepository.findById(passenger).orElse(null);
 //		  resPas.add(rp);
 //	  });
-//	  
+//
 //	  Reservation reservation = new Reservation();
 //	  reservation.setReservationDate(resDate);
 //	  reservation.setOutboundFlight(outAir);
@@ -62,19 +62,19 @@ public class ReservationService {
 //	  reservation.setReturnFlight(retAir);
 //	  reservation.setPassengers(resPas);
 //	  reservation.setAgency(ag);
-//	  
+//
 //	  return reservationRepository.save(reservation);
 //  }
-  
+
   public List<Flight> findStatusReservation(int agencyId){
-	  
+
 	  List<Integer> flightsId = reservationRepository.getPastReservations(agencyId);
 	  List<Flight> flights = new ArrayList<>();
 	  flightsId.forEach(id -> {
 		 Flight flight = flightRepository.findById(id).orElse(null);
-		 flights.add(flight); 
+		 flights.add(flight);
 	  });
-	  return flights;			  
+	  return flights;
   }
 
   public void changeReservationPassenger(int reservationId, int ticketId, Passenger newPassenger) {
@@ -92,11 +92,12 @@ public class ReservationService {
   }
 
   public List<ReservationPassenger> getBoardingTicketList(int reservationId, int agencyId) {
-    return reservationRepository.getBoardingTickets(reservationId, agencyId);
+    Agency agency = agencyRepository.findById(agencyId).orElse(null);
+    return reservationRepository.getBoardingTickets(reservationId, agency);
   }
 
   public List<ReservationPassenger> getFlightBoardingTickets(int flightId, int agencyId) {
-    Agency agency = agencyRepository.findById(agencyId).get();
+    Agency agency = agencyRepository.findById(agencyId).orElseGet(null);
     return reservationRepository.getFlightBoardingTickets(flightId, agency);
   }
 
