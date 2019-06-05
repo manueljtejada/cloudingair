@@ -80,12 +80,16 @@ public class ReservationService {
 	  return flights;
   }
 
-  public void changeReservationPassenger(int reservationId, int ticketId, Passenger newPassenger) {
+  public ReservationPassenger changeReservationPassenger(int reservationId, int ticketId, Passenger newPassenger) {
     Reservation reservationToUpdate = reservationRepository.findById(reservationId).get();
-    ReservationPassenger ticketToUpdate = reservationToUpdate.getPassengers().stream().filter(p -> p.getId() == ticketId).findFirst().get();
+    ReservationPassenger ticketToUpdate = reservationToUpdate.getPassengers()
+    		.stream()
+    		.filter(p -> p.getId() == ticketId)
+    		.findFirst().get();
 
     ticketToUpdate.setPassenger(newPassenger);
     ticketRepository.save(ticketToUpdate);
+    return ticketToUpdate;
   }
 
   public List<MonthlyProfit> getMonthlyProfits() {

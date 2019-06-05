@@ -54,5 +54,12 @@ public class FlightService {
 				nextThreeDays);
 		return flights;
 	}
+	
+	// Q5
+	public Flight updateReservation(int flightId) {
+		Flight cancelledFlight = flightRepository.findById(flightId).orElse(null);
+		flightRepository.cancelFlight(flightId);
+		return cancelledFlight;	
+	}
 
 }
