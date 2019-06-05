@@ -126,8 +126,8 @@ public class CloudingairApplication implements CommandLineRunner {
 		// topDest.forEach(a -> System.out.println(a.getAirportName()));
 
 		// Q8
-		List<MonthlyProfit> mp = reservationService.getMonthlyProfits(LocalDate.of(2019, 06, 01));
-		mp.forEach(m -> System.out.println(m.getMonth() + " " + m.getYear() + " " + m.getProfits()));
+		// List<MonthlyProfit> mp = reservationService.getMonthlyProfits(LocalDate.of(2019, 06, 01));
+		// mp.forEach(m -> System.out.println(m.getMonth() + " " + m.getYear() + " " + m.getProfits()));
 	}
 
 }
