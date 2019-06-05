@@ -84,8 +84,8 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   public List<ReservationPassenger> getFlightBoardingTickets(@Param("flightId") int flightId, @Param("agency") Agency agency);
 
   /* Q7 */
-  @Query("SELECT r.outboundFlight.destination FROM Reservation r WHERE r.outboundFlight.departureDate BETWEEN '2019-01-31' AND :date GROUP BY (r.outboundFlight.destination) ORDER BY SUM(r.price) DESC")
-  public List<Airport> findTop10Destinations(Pageable pageable, @Param("date") Date date);
+  @Query("SELECT r.outboundFlight.destination FROM Reservation r WHERE r.outboundFlight.departureDate BETWEEN :endDate AND :startDate GROUP BY (r.outboundFlight.destination) ORDER BY SUM(r.price) DESC")
+  public List<Airport> findTop10Destinations(Pageable pageable, @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
   /* Q8 */
 	@Query("SELECT new com.twcam.uv.cloudingair.domain.MonthlyProfit(MONTH(r.reservationDate), YEAR(r.reservationDate), SUM(r.price)) " +
