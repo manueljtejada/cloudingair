@@ -7,9 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -75,6 +75,18 @@ public class FlightController {
 			@PathVariable("flightId") int flightId) {
 		
 		return reservationService.getFlightBoardingTickets(flightId, agencyId);
+	}
+	
+	// Q5.1
+	@PutMapping("/{flightId}/cancel")
+	public ResponseEntity<Flight> cancelFlight(@PathVariable("agencyId") int agencyId,
+			@PathVariable("flightId") int flightId) {
+		
+		Flight cancelledFlight = flightService.updateReservation(flightId);
+//		if(result.hasErrors()) {
+//			return new ResponseEntity<>(cancelledFlight, HttpStatus.NOT_FOUND);
+//		}
+		return new ResponseEntity<>(cancelledFlight, HttpStatus.CREATED);
 	}
 	
 }
