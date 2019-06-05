@@ -7,5 +7,5 @@ import com.twcam.uv.cloudingair.domain.Agency;
 
 @Repository
 public interface AgencyRepository extends JpaRepository<Agency, Integer> {
-
+  public Agency findByUserName(String username);
 }
