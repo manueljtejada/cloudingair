@@ -30,19 +30,19 @@ public class ReservationService {
 
   @Autowired
   PassengerRepository passengerRepository;
-  
+
   @Autowired
   private FlightRepository flightRepository;
-  
+
   @Autowired
   private ReservationPassengerRepository reservationPassengerRepository;
-  
+
   @Autowired
   private AgencyRepository agencyRepository;
-  
+
   public Reservation create(String reservationDate, float price, boolean paid, int outboundFlight,
 		  int returnFlight, List<Integer> passengers, int agency) {
-	  
+
 	  Date resDate = Date.valueOf(LocalDate.parse(reservationDate));
 	  Flight outAir = flightRepository.findById(outboundFlight).orElse(null);
 	  Flight retAir = flightRepository.findById(returnFlight).orElse(null);
@@ -52,7 +52,7 @@ public class ReservationService {
 		  ReservationPassenger rp = reservationPassengerRepository.findById(passenger).orElse(null);
 		  resPas.add(rp);
 	  });
-	  
+
 	  Reservation reservation = new Reservation();
 	  reservation.setReservationDate(resDate);
 	  reservation.setOutboundFlight(outAir);
@@ -61,7 +61,7 @@ public class ReservationService {
 	  reservation.setReturnFlight(retAir);
 	  reservation.setPassengers(resPas);
 	  reservation.setAgency(ag);
-	  
+
 	  return reservationRepository.save(reservation);
   }
 
@@ -77,6 +77,10 @@ public class ReservationService {
     Date startDate = java.sql.Date.valueOf(date);
     Date endDate = java.sql.Date.valueOf(date.minusMonths(6));
 	return reservationRepository.getMonthlyProfits(startDate, endDate);
+  }
+
+  public List<ReservationPassenger> getBoardingTicketList(int reservationId) {
+    return reservationRepository.getBoardingTickets(reservationId);
   }
 
 }

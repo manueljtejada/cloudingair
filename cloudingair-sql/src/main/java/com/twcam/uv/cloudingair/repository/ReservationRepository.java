@@ -70,9 +70,9 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   @Query("SELECT r.passengers"
   		+ " FROM Reservation r "
   		+ "WHERE r.id = :reservationId"
-  		+ " AND r.agency = :agency"
   		+ " AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
-  public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
+  // public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
+  public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId);
 
   /* Q7 */
   @Query("SELECT r.outboundFlight.destination FROM Reservation r WHERE r.outboundFlight.departureDate BETWEEN '2019-01-31' AND :date GROUP BY (r.outboundFlight.destination) ORDER BY SUM(r.price) DESC")

@@ -43,7 +43,6 @@ public class ReservationPassenger implements Serializable {
 
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
   @JoinColumn(name = "seat")
-  @JsonIgnore
   private Seat seat;
 
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
@@ -51,6 +50,5 @@ public class ReservationPassenger implements Serializable {
   private Reservation reservation;
 
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
-  @JsonIgnore
   private Passenger passenger;
 }
