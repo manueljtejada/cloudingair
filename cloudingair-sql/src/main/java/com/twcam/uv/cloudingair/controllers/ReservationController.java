@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
@@ -27,6 +28,11 @@ public class ReservationController {
 	@GetMapping("{agencyId}/flights/{flightId}/tickets")
 	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("flightId") int flightId) {
 		return reservationService.getFlightBoardingTickets(flightId, agencyId);
+	}
+
+	@GetMapping("/topDestinations")
+	public List<Airport> getTop10Destinations() {
+		return reservationService.getTop10Destinations();
 	}
 
 
