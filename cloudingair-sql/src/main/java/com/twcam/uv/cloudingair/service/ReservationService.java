@@ -79,8 +79,13 @@ public class ReservationService {
 	return reservationRepository.getMonthlyProfits(startDate, endDate);
   }
 
-  public List<ReservationPassenger> getBoardingTicketList(int reservationId) {
-    return reservationRepository.getBoardingTickets(reservationId);
+  public List<ReservationPassenger> getBoardingTicketList(int reservationId, int agencyId) {
+    return reservationRepository.getBoardingTickets(reservationId, agencyId);
+  }
+
+  public List<ReservationPassenger> getFlightBoardingTickets(int flightId, int agencyId) {
+    Agency agency = agencyRepository.findById(agencyId).get();
+    return reservationRepository.getFlightBoardingTickets(flightId, agency);
   }
 
 }

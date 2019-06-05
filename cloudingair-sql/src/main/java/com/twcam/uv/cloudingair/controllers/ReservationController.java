@@ -18,10 +18,15 @@ public class ReservationController {
 	@Autowired
 	private ReservationService reservationService;
 
-	@GetMapping("{reservationId}/tickets")
-	public List<ReservationPassenger> getBoardingTickets(@PathVariable("reservationId") int reservationId) {
+	@GetMapping("{agencyId}/reservations/{reservationId}/tickets")
+	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId) {
 		// Solo permitir acceso para la agencia que realizo la reserva
-		return reservationService.getBoardingTicketList(reservationId);
+		return reservationService.getBoardingTicketList(reservationId, agencyId);
+	}
+
+	@GetMapping("{agencyId}/flights/{flightId}/tickets")
+	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("flightId") int flightId) {
+		return reservationService.getFlightBoardingTickets(flightId, agencyId);
 	}
 
 

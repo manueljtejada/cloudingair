@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
+import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
@@ -67,12 +68,20 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   // public List<Flight> getFutureReservations(@Param("agency") Agency agency);
 
   /* Q4 */
-  @Query("SELECT r.passengers"
-  		+ " FROM Reservation r "
-  		+ "WHERE r.id = :reservationId"
-  		+ " AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
-  // public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
-  public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId);
+  @Query("SELECT r.passengers "
+  		+ "FROM Reservation r "
+  		+ "WHERE r.id = :reservationId "
+      + "AND r.agency = :agency "
+  		+ "AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
+  public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
+
+  @Query("SELECT r.passengers "
+  		+ "FROM Reservation r "
+  		+ "WHERE r.outboundFlight.id = :flightId "
+      + "OR r.returnFlight.id = :flightId "
+      + "AND r.agency = :agency "
+  		+ "AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
+  public List<ReservationPassenger> getFlightBoardingTickets(@Param("flightId") int flightId, @Param("agency") Agency agency);
 
   /* Q7 */
   @Query("SELECT r.outboundFlight.destination FROM Reservation r WHERE r.outboundFlight.departureDate BETWEEN '2019-01-31' AND :date GROUP BY (r.outboundFlight.destination) ORDER BY SUM(r.price) DESC")
