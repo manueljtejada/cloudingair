@@ -39,15 +39,15 @@ public class CloudingairApplication implements CommandLineRunner{
 		Store store4 = new Store("Burger King");
 		Store store5 = new Store("Starbucks");
 
-		storeRepository.save(store1);
-		storeRepository.save(store2);
-		storeRepository.save(store3);
-		storeRepository.save(store4);
-		storeRepository.save(store5);
+		storeRepository.save(store1).subscribe();
+		storeRepository.save(store2).subscribe();
+		storeRepository.save(store3).subscribe();
+		storeRepository.save(store4).subscribe();
+		storeRepository.save(store5).subscribe();
 
 		for (int i = 1; i <= 301; i++) {
 			Ticket ticket = new Ticket(i);
-			ticketRepository.save(ticket);
+			ticketRepository.save(ticket).subscribe();
 		}
 
 //		Boarding boarding = new Boarding (1, LocalDateTime.now(), "22A", 56);

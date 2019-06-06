@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @RestController
 @RequestMapping("/api/tickets")
 public class TicketController {
@@ -23,27 +26,27 @@ public class TicketController {
   TicketService service;
 
 	@GetMapping()
-  public List<Ticket> getAllTickets() {
+  public Flux<Ticket> getAllTickets() {
     return service.findAll();
   }
 
   @GetMapping("/{ticketId}")
-  public Ticket getTicket(@PathVariable int ticketId) {
+  public Mono<Ticket> getTicket(@PathVariable int ticketId) {
     return service.findById(ticketId);
   }
 
   @PutMapping("/{ticketId}/security")
-  public Ticket registerSecurityCheck(@PathVariable int ticketId, @RequestBody SecurityCheck securityCheck) {
+  public Mono<Ticket> registerSecurityCheck(@PathVariable int ticketId, @RequestBody SecurityCheck securityCheck) {
     return service.registerSecurityCheck(ticketId, securityCheck);
   }
 
   @PutMapping("/{ticketId}/boarding")
-  public Ticket registerBoarding(@PathVariable int ticketId, @RequestBody Boarding boarding) {
+  public Mono<Ticket> registerBoarding(@PathVariable int ticketId, @RequestBody Boarding boarding) {
     return service.registerBoarding(ticketId, boarding);
   }
 
   @PutMapping("/{ticketId}/shopping/{storeId}")
-  public Ticket registerPurchase(@PathVariable int ticketId, @PathVariable String storeId, @RequestBody Purchase purchase) {
+  public Mono<Ticket> registerPurchase(@PathVariable int ticketId, @PathVariable String storeId, @RequestBody Purchase purchase) {
     return service.registerPurchase(ticketId, storeId, purchase);
   }
 }
