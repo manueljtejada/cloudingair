@@ -38,14 +38,14 @@ public class ReservationController {
 	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("flightId") int flightId) {
 		return reservationService.getFlightBoardingTickets(flightId, agencyId);
 	}
-	
+
 	// Q5.2
 	@PutMapping("/reservations/{reservationId}/tickets/{ticketId}")
 	public ResponseEntity<ReservationPassenger> changeTicket(@PathVariable("agencyId") int agencyId,
 											@PathVariable("reservationId") int reservationId,
 											@PathVariable("ticketId") int ticketId,
 											@RequestBody Passenger newPassenger) {
-		
+
 		ReservationPassenger changedTicket = reservationService.changeReservationPassenger(reservationId, ticketId, newPassenger);
 //		if(result.hasErrors()) {
 //			return new ResponseEntity<>(cancelledFlight, HttpStatus.NOT_FOUND);

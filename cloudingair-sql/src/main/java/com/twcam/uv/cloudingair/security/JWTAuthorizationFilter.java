@@ -12,6 +12,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.twcam.uv.cloudingair.domain.Agency;
+import com.twcam.uv.cloudingair.repository.AgencyRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,6 +24,9 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import io.jsonwebtoken.Jwts;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
+
+	@Autowired
+	AgencyRepository agencyRepository;
 
 	public JWTAuthorizationFilter(AuthenticationManager authManager) {
 		super(authManager);
@@ -47,6 +54,12 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 						.parseClaimsJws(token.replace(TOKEN_BEARER_PREFIX, ""))
 						.getBody()
 						.getSubject();
+
+			System.out.println("Usuario del filtro: " + user);
+			System.out.println("FILTROOOOOO");
+
+			// Agency agency = agencyRepository.findByUserName(user);
+			// System.out.println("Agencia del filtro: " + agency);
 
 			if (user != null) {
 				return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
