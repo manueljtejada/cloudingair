@@ -29,69 +29,59 @@ public class TicketService {
   private StoreRepository storeRepository;
 
   public Flux<Ticket> findAll() {
-    return repository.findAll();
+    return Flux.fromIterable(repository.findAll());
   }
 
   public Mono<Ticket> findById(int id) {
-    return repository.findById(id);
+    return Mono.just(repository.findById(id).orElse(null));
   }
 
   public Mono<Ticket> registerSecurityCheck(int ticketId, SecurityCheck securityCheck) {
-    Mono<Ticket> ticketMono = repository.findById(ticketId);
+    Ticket ticket = repository.findById(ticketId).orElse(null);
 
-    return ticketMono
-      .flatMap(ticket -> {
-        securityCheck.setId(new ObjectId());
-        securityCheck.setDate(LocalDate.now());
-        securityCheck.setTime(LocalTime.now());
+    securityCheck.setId(new ObjectId());
+    securityCheck.setDate(LocalDate.now());
+    securityCheck.setTime(LocalTime.now());
+    ticket.setSecurityCheck(securityCheck);
 
-        ticket.setSecurityCheck(securityCheck);
+    repository.save(ticket);
 
-        return Mono.just(ticket);
-      }).flatMap(repository::save);
+    return Mono.just(ticket);
   }
 
   public Mono<Ticket> registerBoarding(int ticketId, Boarding boarding) {
-    Mono<Ticket> ticketMono = repository.findById(ticketId);
+    Ticket ticket = repository.findById(ticketId).orElse(null);
 
-    return ticketMono
-      .flatMap(ticket -> {
-        boarding.setId(new ObjectId());
-        boarding.setDate(LocalDate.now());
-        boarding.setTime(LocalTime.now());
+    boarding.setId(new ObjectId());
+    boarding.setDate(LocalDate.now());
+    boarding.setTime(LocalTime.now());
+    ticket.setBoarding(boarding);
 
-        ticket.setBoarding(boarding);
+    repository.save(ticket);
 
-        return Mono.just(ticket);
-      }).flatMap(repository::save);
+    return Mono.just(ticket);
   }
 
   public Mono<Ticket> registerPurchase(int ticketId, String storeId, Purchase purchase) {
-    Mono<Ticket> ticketMono = repository.findById(ticketId);
-    Mono<Store> storeMono = storeRepository.findById(storeId);
+    Ticket ticket = repository.findById(ticketId).orElse(null);
+    Store store = storeRepository.findById(storeId).orElse(null);
 
-    return ticketMono
-      .flatMap(ticket -> {
-        List<Purchase> existingPurchases = ticket.getPurchases();
+    List<Purchase> existingPurchases = ticket.getPurchases();
 
-        if (existingPurchases == null) {
-          existingPurchases = new ArrayList<Purchase>();
-        }
+    if (existingPurchases == null) {
+      existingPurchases = new ArrayList<Purchase>();
+    }
 
-        purchase.setId(new ObjectId());
-        purchase.setDate(LocalDate.now());
-        purchase.setTime(LocalTime.now());
+    purchase.setId(new ObjectId());
+    purchase.setDate(LocalDate.now());
+    purchase.setTime(LocalTime.now());
+    purchase.setStore(store);
 
-        // TODO esto no esta funcionando. Buscar otra forma de hacerlo
-        storeMono.flatMap(store -> {
-          purchase.setStore(store);
-          return Mono.just(store);
-        });
+    existingPurchases.add(purchase);
+    ticket.setPurchases(existingPurchases);
 
-        existingPurchases.add(purchase);
-        ticket.setPurchases(existingPurchases);
+    repository.save(ticket);
 
-        return Mono.just(ticket);
-      }).flatMap(repository::save);
+    return Mono.just(ticket);
   }
 }
