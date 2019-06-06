@@ -17,13 +17,10 @@ public class Ticket {
   @Id
   private int id;
 
-  @DBRef
   private SecurityCheck securityCheck;
 
-  @DBRef
   private Boarding boarding;
 
-  @DBRef
   private List<Purchase> purchases;
 
   public Ticket(int id) {

@@ -70,12 +70,6 @@ public class TicketService {
     Mono<Ticket> ticketMono = repository.findById(ticketId);
     Mono<Store> storeMono = storeRepository.findById(storeId);
 
-    storeMono.flatMap(store -> {
-      purchase.setStore(store);
-      System.out.println(purchase.getStore());
-      return Mono.just(store);
-    });
-
     return ticketMono
       .flatMap(ticket -> {
         List<Purchase> existingPurchases = ticket.getPurchases();
@@ -87,6 +81,11 @@ public class TicketService {
         purchase.setId(new ObjectId());
         purchase.setDate(LocalDate.now());
         purchase.setTime(LocalTime.now());
+
+        storeMono.flatMap(store -> {
+          purchase.setStore(store);
+          return Mono.just(store);
+        });
 
         existingPurchases.add(purchase);
         ticket.setPurchases(existingPurchases);
