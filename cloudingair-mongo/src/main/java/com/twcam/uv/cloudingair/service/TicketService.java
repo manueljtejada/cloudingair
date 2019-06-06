@@ -82,6 +82,7 @@ public class TicketService {
         purchase.setDate(LocalDate.now());
         purchase.setTime(LocalTime.now());
 
+        // TODO esto no esta funcionando. Buscar otra forma de hacerlo
         storeMono.flatMap(store -> {
           purchase.setStore(store);
           return Mono.just(store);
