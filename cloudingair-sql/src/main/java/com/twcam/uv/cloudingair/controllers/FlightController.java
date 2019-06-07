@@ -64,13 +64,13 @@ public class FlightController {
 	
 	}
 	// Q1
-	@GetMapping
+	@GetMapping("/search")
 	public Map<String, List<Flight>> findAllFlightsAvailable(
 			@RequestParam int origin, @RequestParam int destination,
 			@RequestParam String outboundDate,
 			@RequestParam String returnDate,
-			@RequestParam boolean roundTrip, @RequestParam int totalPassenger,
-			@AuthenticationPrincipal Agency agency)
+			@RequestParam boolean roundTrip, 
+			@RequestParam int totalPassenger)
 	{
 		Airport originA = airportService.findAirpoirtById(origin).orElse(null);
 		Airport destinationA = airportService.findAirpoirtById(destination).orElse(null);
@@ -78,14 +78,14 @@ public class FlightController {
 
 		return flights;
 	}
-
-	@GetMapping("/test")
-	public Agency user(Principal principal)
-	{
-		Agency agency = agencyRepository.findByUsername(principal.getName());
-		// System.out.println("Agencia en el controlador: " + agency);
-		return agency;
-	}
+//
+//	@GetMapping("/test")
+//	public Agency user(Principal principal)
+//	{
+//		Agency agency = agencyRepository.findByUsername(principal.getName());
+//		// System.out.println("Agencia en el controlador: " + agency);
+//		return agency;
+//	}
 
 	// Q2
 	@GetMapping("/alternatives")
