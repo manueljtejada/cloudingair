@@ -42,6 +42,6 @@ public class UserController {
 
   @GetMapping("/{username}")
   public Agency getUser(@PathVariable String username) {
-    return agencyRepository.findByUserName(username);
+    return agencyRepository.findByUsername(username);
   }
 }
