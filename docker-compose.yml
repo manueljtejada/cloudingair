@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  cloudingairsql:
+    container_name: cloudingair-reservations
+    build:
+      context: ./cloudingair-sql
+      dockerfile: Dockerfile
+    image: cloudingairsql:latest
+    expose:
+      - 8080
+    networks:
+      - cloudingair-network
+    depends_on:
+      - discovery
+
+  cloudingairmongo:
+    container_name: cloudingair-airports
+    build:
+      context: ./cloudingair-mongo
+      dockerfile: Dockerfile
+    image: cloudingairmongo:latest
+    expose:
+      - 8081
+    networks:
+      - cloudingair-network
+    depends_on:
+      - discovery
+
+  discovery:
+    container_name: cloudingair-eureka
+    build:
+      context: ./discovery-server
+      dockerfile: Dockerfile
+    image: discovery:latest
+    expose:
+      - 8761
+    networks:
+      - cloudingair-network
+
+networks:
+  cloudingair-network:
+    driver: bridge
