@@ -22,8 +22,12 @@ public class FlightService {
 	@Autowired
 	FlightRepository flightRepository;
 
-	public Optional<Flight>findFlightById(int id) {
-		return flightRepository.findById(id);
+	public Flight findFlightById(int id) {
+		return flightRepository.findById(id).orElse(null);
+	}
+	
+	public List<Flight> findAllFlights() {
+		return flightRepository.findAll();
 	}
 
 	// Q1

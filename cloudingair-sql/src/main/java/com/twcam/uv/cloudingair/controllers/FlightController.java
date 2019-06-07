@@ -4,8 +4,10 @@ import java.security.Principal;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.twcam.uv.cloudingair.assembler.FlightResourceAssembler;
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
@@ -40,7 +43,26 @@ public class FlightController {
 
 	@Autowired
 	private AgencyRepository agencyRepository;
-
+	
+	@Autowired
+	private FlightResourceAssembler flightAssembler;
+	
+	@GetMapping
+	public ResponseEntity<?> findAllFlights() {
+		List<Resource<Flight>> flights = flightService.findAllFlights()
+														.stream()
+														.map(flightAssembler::toResource)
+														.collect(Collectors.toList());
+		return new ResponseEntity<>(flights, HttpStatus.OK);
+	}
+	
+	@GetMapping("/{flightId}")
+	public ResponseEntity<?> findFlightById(@PathVariable("flightId") int flightId) {
+		Flight flight = flightService.findFlightById(flightId);
+		Resource<Flight> flightResource = flightAssembler.toResource(flight);
+		return new ResponseEntity<>(flightResource, HttpStatus.OK);
+	
+	}
 	// Q1
 	@GetMapping
 	public Map<String, List<Flight>> findAllFlightsAvailable(
