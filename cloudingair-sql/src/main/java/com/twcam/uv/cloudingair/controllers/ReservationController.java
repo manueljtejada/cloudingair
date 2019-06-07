@@ -18,11 +18,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.twcam.uv.cloudingair.assembler.ReservationResourceAssembler;
+import java.security.Principal;
+import java.util.List;
+
+import com.twcam.uv.cloudingair.domain.Flight;
+import com.twcam.uv.cloudingair.domain.Passenger;
+import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
+import com.twcam.uv.cloudingair.repository.AgencyRepository;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
 @RestController
@@ -31,9 +38,12 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationService reservationService;
-	
+
 	@Autowired
 	private ReservationResourceAssembler assembler;
+
+	@Autowired
+	private AgencyRepository agencyRepository;
 
 	@GetMapping
 	public ResponseEntity<?> findAllReservations(){
@@ -42,13 +52,13 @@ public class ReservationController {
 													.map(assembler::toResource)
 													.collect(Collectors.toList());
 		return new ResponseEntity<>(reservations, HttpStatus.OK);
-									
+
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<?> createReservation(@RequestBody Map<String, String> reservation) {
 		 System.out.println(reservation);
-		
+
 		String reservationDate = reservation.get("reservationDate");
 		String price = reservation.get("price");
 		String paid = reservation.get("paid");
@@ -56,25 +66,27 @@ public class ReservationController {
 		String returnFlight = reservation.get("returnFlight");
 		String passengers = reservation.get("passengers");
 		String agency = reservation.get("agency");
-		
+
 	   String[]passengersString = passengers.split(" ");
-	  
+
 		Reservation reservationCr = reservationService.create(reservationDate, price, paid, outboundFlight, returnFlight, passengersString, agency);
 		Resource<Reservation> reservationResource = assembler.toResource(reservationCr);
 		return new ResponseEntity<>(reservationResource, HttpStatus.CREATED);
 		//return ResponseEntity.created(new URI(resource.getId().expand().getHref())).body(reservationResource);
 	}
-	
+
 	@GetMapping("/{reservationId}")
 	public Resource<Reservation> findReservtion(@PathVariable("reservationId") int reservationId) {
 		Reservation reservation = reservationService.findReservationById(reservationId);
 		return assembler.toResource(reservation);
 	}
-	
+
+
 	@GetMapping("/{reservationId}/tickets")
-	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId) {
+	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId, Principal principal) {
 		// Solo permitir acceso para la agencia que realizo la reserva
-		return reservationService.getBoardingTicketList(reservationId, agencyId);
+		Agency agency = agencyRepository.findByUsername(principal.getName());
+		return reservationService.getBoardingTicketList(reservationId, agency);
 	}
 
 
@@ -82,14 +94,14 @@ public class ReservationController {
 	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("flightId") int flightId) {
 		return reservationService.getFlightBoardingTickets(flightId, agencyId);
 	}
-	
+
 	// Q5.2
 	@PutMapping("/reservations/{reservationId}/tickets/{ticketId}")
 	public ResponseEntity<ReservationPassenger> changeTicket(@PathVariable("agencyId") int agencyId,
 											@PathVariable("reservationId") int reservationId,
 											@PathVariable("ticketId") int ticketId,
 											@RequestBody Passenger newPassenger) {
-		
+
 		ReservationPassenger changedTicket = reservationService.changeReservationPassenger(reservationId, ticketId, newPassenger);
 //		if(result.hasErrors()) {
 //			return new ResponseEntity<>(cancelledFlight, HttpStatus.NOT_FOUND);
@@ -106,12 +118,12 @@ public class ReservationController {
 	public List<MonthlyProfit> getMonthlyProfits() {
 		return reservationService.getMonthlyProfits();
 	}
-	
+
 	@DeleteMapping("/{reservationId}")
 	public ResponseEntity<?> deleteReservation(@PathVariable("reservationId") int reservationId) {
 		Reservation reservation = reservationService.deleteReservation(reservationId);
 		Resource<Reservation> reservationResource = assembler.toResource(reservation);
 		return new ResponseEntity<>(reservationResource, HttpStatus.OK);
-	}	
+	}
 
 }

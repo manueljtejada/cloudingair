@@ -41,17 +41,17 @@ public class Flight implements Serializable {
   @Size(max = 100)
 	private String flightNumber;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "origin")
   @JsonIgnore
 	private Airport origin;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "destination")
   @JsonIgnore
 	private Airport destination;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "plane")
   @JsonIgnore
 	private Plane plane;

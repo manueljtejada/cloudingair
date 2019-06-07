@@ -26,7 +26,7 @@ import org.springframework.data.domain.Pageable;
 
 
 @SpringBootApplication
-@EntityScan("com.twcam.uv.cloudingair")
+@EntityScan("com.twcam.uv.cloudingair.*")
 public class CloudingairApplication implements CommandLineRunner {
 
 

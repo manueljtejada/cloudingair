@@ -1,6 +1,7 @@
 package com.twcam.uv.cloudingair.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,9 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @Service
 public class TicketService {
   @Autowired
@@ -25,41 +29,42 @@ public class TicketService {
   @Autowired
   private StoreRepository storeRepository;
 
-  public List<Ticket> findAll() {
-    return repository.findAll();
+  public Flux<Ticket> findAll() {
+    return Flux.fromIterable(repository.findAll());
   }
 
-  public Ticket findById(int id) {
-    return repository.findById(id).orElse(null);
+  public Mono<Ticket> findById(int id) {
+    return Mono.just(repository.findById(id).orElse(null));
   }
 
-  public Ticket registerSecurityCheck(int ticketId, SecurityCheck securityCheck) {
+  public Mono<Ticket> registerSecurityCheck(int ticketId, SecurityCheck securityCheck) {
     Ticket ticket = repository.findById(ticketId).orElse(null);
 
     securityCheck.setId(new ObjectId());
-    securityCheck.setDate(LocalDate.now());
-    securityCheck.setTime(LocalTime.now());
-
+    securityCheck.setTimestamp(LocalDateTime.now());
     ticket.setSecurityCheck(securityCheck);
 
-    return repository.save(ticket);
+    repository.save(ticket);
+
+    return Mono.just(ticket);
   }
 
-  public Ticket registerBoarding(int ticketId, Boarding boarding) {
+  public Mono<Ticket> registerBoarding(int ticketId, Boarding boarding) {
     Ticket ticket = repository.findById(ticketId).orElse(null);
 
     boarding.setId(new ObjectId());
-    boarding.setDate(LocalDate.now());
-    boarding.setTime(LocalTime.now());
-
+    boarding.setTimestamp(LocalDateTime.now());
     ticket.setBoarding(boarding);
 
-    return repository.save(ticket);
+    repository.save(ticket);
+
+    return Mono.just(ticket);
   }
 
-  public Ticket registerPurchase(int ticketId, String storeId, Purchase purchase) {
+  public Mono<Ticket> registerPurchase(int ticketId, String storeId, Purchase purchase) {
     Ticket ticket = repository.findById(ticketId).orElse(null);
     Store store = storeRepository.findById(storeId).orElse(null);
+
     List<Purchase> existingPurchases = ticket.getPurchases();
 
     if (existingPurchases == null) {
@@ -67,13 +72,14 @@ public class TicketService {
     }
 
     purchase.setId(new ObjectId());
-    purchase.setDate(LocalDate.now());
-    purchase.setTime(LocalTime.now());
+    purchase.setTimestamp(LocalDateTime.now());
     purchase.setStore(store);
 
     existingPurchases.add(purchase);
     ticket.setPurchases(existingPurchases);
 
-    return repository.save(ticket);
+    repository.save(ticket);
+
+    return Mono.just(ticket);
   }
 }

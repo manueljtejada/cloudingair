@@ -21,9 +21,7 @@ public class Boarding {
   @Id
   private ObjectId id;
 
-  private LocalDate date;
-
-  private LocalTime time;
+  private LocalDateTime timestamp;
 
   private String gate;
 

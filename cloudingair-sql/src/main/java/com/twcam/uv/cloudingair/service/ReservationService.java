@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -54,23 +53,23 @@ public class ReservationService {
 
 	public Reservation create(String reservationDate, String price, String paid, String outboundFlight, String returnFlight,
 			String [] passengers, String agency) {
-	  
+
 	  Date resDate = Date.valueOf(LocalDate.parse(reservationDate));
 	  Flight outAir = flightRepository.findById(Integer.parseInt(outboundFlight)).orElse(null);
 	  Flight retAir = flightRepository.findById(Integer.parseInt(returnFlight)).orElse(null);
 	  Agency ag = agencyRepository.findById(Integer.parseInt(agency)).orElse(null);
 	  float pr = Float.parseFloat(price);
 	  boolean pd = Boolean.parseBoolean(paid);
-	  
+
 	  List<ReservationPassenger> resPas = new ArrayList<>();
-	  
+
 
 		for (String id : passengers) {
 			ReservationPassenger rp= reservationPassengerRepository.findById(Integer.parseInt(id)).get();
 			resPas.add(rp);
 		}
-	  
-  
+
+
 	  Reservation reservation = new Reservation();
 	  reservation.setReservationDate(resDate);
 	  reservation.setOutboundFlight(outAir);
@@ -79,11 +78,10 @@ public class ReservationService {
 	  reservation.setReturnFlight(retAir);
 	  reservation.setPassengers(resPas);
 	  reservation.setAgency(ag);
-	  
+
 	  return reservationRepository.save(reservation);
-//
 	}
-	
+
 	public Reservation deleteReservation(int id) {
 		Reservation reservation = reservationRepository.findById(id).orElse(null);
 		reservationRepository.delete(reservation);
@@ -120,8 +118,7 @@ public class ReservationService {
 		return reservationRepository.getMonthlyProfits(startDate, endDate);
 	}
 
-	public List<ReservationPassenger> getBoardingTicketList(int reservationId, int agencyId) {
-		Agency agency = agencyRepository.findById(agencyId).orElse(null);
+	public List<ReservationPassenger> getBoardingTicketList(int reservationId, Agency agency) {
 		return reservationRepository.getBoardingTickets(reservationId, agency);
 	}
 
