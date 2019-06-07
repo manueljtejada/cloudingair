@@ -101,8 +101,7 @@ public class ReservationService {
 	  return reservationRepository.getMonthlyProfits(startDate, endDate);
   }
 
-  public List<ReservationPassenger> getBoardingTicketList(int reservationId, int agencyId) {
-    Agency agency = agencyRepository.findById(agencyId).orElse(null);
+  public List<ReservationPassenger> getBoardingTicketList(int reservationId, Agency agency) {
     return reservationRepository.getBoardingTickets(reservationId, agency);
   }
 

@@ -1,6 +1,7 @@
 package com.twcam.uv.cloudingair.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,11 +28,19 @@ public class Agency implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String userName;
+	private String username;
 	private String password;
+	private String role;
 
-	@OneToMany(mappedBy = "agency")
+	@OneToMany(mappedBy = "agency", fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Reservation> reservations;
+
+	public Agency(int id, String username, String password, String role) {
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
 
 }

@@ -19,7 +19,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -69,12 +68,12 @@ public class Reservation implements Serializable {
   @Column(name = "paid", nullable = false)
   private boolean paid = false;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "outbound_flight")
   @JsonIgnore
   private Flight outboundFlight;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "return_flight")
   @JsonIgnore
   private Flight returnFlight;
@@ -83,7 +82,7 @@ public class Reservation implements Serializable {
   @JsonIgnore
   private List<ReservationPassenger> passengers;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JsonIgnore
   private Agency agency;
 }
