@@ -1,6 +1,7 @@
 package com.twcam.uv.cloudingair.service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,7 @@ public class TicketService {
     Ticket ticket = repository.findById(ticketId).orElse(null);
 
     securityCheck.setId(new ObjectId());
-    securityCheck.setDate(LocalDate.now());
-    securityCheck.setTime(LocalTime.now());
+    securityCheck.setTimestamp(LocalDateTime.now());
     ticket.setSecurityCheck(securityCheck);
 
     repository.save(ticket);
@@ -53,8 +53,7 @@ public class TicketService {
     Ticket ticket = repository.findById(ticketId).orElse(null);
 
     boarding.setId(new ObjectId());
-    boarding.setDate(LocalDate.now());
-    boarding.setTime(LocalTime.now());
+    boarding.setTimestamp(LocalDateTime.now());
     ticket.setBoarding(boarding);
 
     repository.save(ticket);
@@ -73,8 +72,7 @@ public class TicketService {
     }
 
     purchase.setId(new ObjectId());
-    purchase.setDate(LocalDate.now());
-    purchase.setTime(LocalTime.now());
+    purchase.setTimestamp(LocalDateTime.now());
     purchase.setStore(store);
 
     existingPurchases.add(purchase);

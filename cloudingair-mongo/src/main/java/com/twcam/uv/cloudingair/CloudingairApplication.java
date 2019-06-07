@@ -45,7 +45,7 @@ public class CloudingairApplication implements CommandLineRunner{
 		storeRepository.save(store4);
 		storeRepository.save(store5);
 
-		for (int i = 1; i <= 301; i++) {
+		for (int i = 51; i <= 301; i++) {
 			Ticket ticket = new Ticket(i);
 			ticketRepository.save(ticket);
 		}
