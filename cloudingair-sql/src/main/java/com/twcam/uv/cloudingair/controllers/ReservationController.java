@@ -10,13 +10,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.List;
 
 import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.Passenger;
+import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
+import com.twcam.uv.cloudingair.repository.AgencyRepository;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
 @RestController
@@ -26,11 +29,15 @@ public class ReservationController {
 	@Autowired
 	private ReservationService reservationService;
 
+	@Autowired
+	private AgencyRepository agencyRepository;
+
 
 	@GetMapping("/{reservationId}/tickets")
-	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId) {
+	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId, Principal principal) {
 		// Solo permitir acceso para la agencia que realizo la reserva
-		return reservationService.getBoardingTicketList(reservationId, agencyId);
+		Agency agency = agencyRepository.findByUsername(principal.getName());
+		return reservationService.getBoardingTicketList(reservationId, agency);
 	}
 
 

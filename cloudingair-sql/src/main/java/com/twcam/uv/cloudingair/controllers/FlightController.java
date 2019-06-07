@@ -1,5 +1,6 @@
 package com.twcam.uv.cloudingair.controllers;
 
+import java.security.Principal;
 import java.sql.Date;
 import java.util.List;
 import java.util.Map;
@@ -57,10 +58,10 @@ public class FlightController {
 	}
 
 	@GetMapping("/test")
-	public Agency user(@AuthenticationPrincipal String user)
+	public Agency user(Principal principal)
 	{
-		Agency agency = agencyRepository.findByUserName(user);
-		System.out.println("Agencia en el controlador: " + agency);
+		Agency agency = agencyRepository.findByUsername(principal.getName());
+		// System.out.println("Agencia en el controlador: " + agency);
 		return agency;
 	}
 
