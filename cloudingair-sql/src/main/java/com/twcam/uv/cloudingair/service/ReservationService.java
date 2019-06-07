@@ -1,7 +1,7 @@
 package com.twcam.uv.cloudingair.service;
 
-import java.time.LocalDate;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,100 +25,117 @@ import com.twcam.uv.cloudingair.repository.ReservationRepository;
 
 @Service
 public class ReservationService {
-  @Autowired
-  ReservationRepository reservationRepository;
+	@Autowired
+	ReservationRepository reservationRepository;
+
+	@Autowired
+	ReservationPassengerRepository ticketRepository;
+
+	@Autowired
+	PassengerRepository passengerRepository;
+
+	@Autowired
+	private FlightRepository flightRepository;
 
   @Autowired
-  ReservationPassengerRepository ticketRepository;
+  private ReservationPassengerRepository reservationPassengerRepository;
 
-  @Autowired
-  PassengerRepository passengerRepository;
+	@Autowired
+	private AgencyRepository agencyRepository;
 
-  @Autowired
-  private FlightRepository flightRepository;
+	public List<Reservation> findAllReservations() {
+		return reservationRepository.findAll();
+	}
+
+	public Reservation findReservationById(int id) {
+		return reservationRepository.findById(id).orElse(null);
+	}
+
+	public Reservation create(String reservationDate, String price, String paid, String outboundFlight, String returnFlight,
+			String [] passengers, String agency) {
+
+	  Date resDate = Date.valueOf(LocalDate.parse(reservationDate));
+	  Flight outAir = flightRepository.findById(Integer.parseInt(outboundFlight)).orElse(null);
+	  Flight retAir = flightRepository.findById(Integer.parseInt(returnFlight)).orElse(null);
+	  Agency ag = agencyRepository.findById(Integer.parseInt(agency)).orElse(null);
+	  float pr = Float.parseFloat(price);
+	  boolean pd = Boolean.parseBoolean(paid);
+
+	  List<ReservationPassenger> resPas = new ArrayList<>();
 
 
-//  @Autowired
-//  private ReservationPassengerRepository reservationPassengerRepository;
-//
- @Autowired
- private AgencyRepository agencyRepository;
-//
-//  public Reservation create(String reservationDate, float price, boolean paid, int outboundFlight,
-//		  int returnFlight, List<Integer> passengers, int agency) {
-//
-//	  Date resDate = Date.valueOf(LocalDate.parse(reservationDate));
-//	  Flight outAir = flightRepository.findById(outboundFlight).orElse(null);
-//	  Flight retAir = flightRepository.findById(returnFlight).orElse(null);
-//	  Agency ag = agencyRepository.findById(agency).orElse(null);
-//	  List<ReservationPassenger> resPas = new ArrayList<>();
-//	  passengers.forEach(passenger -> {
-//		  ReservationPassenger rp = reservationPassengerRepository.findById(passenger).orElse(null);
-//		  resPas.add(rp);
-//	  });
-//
-//	  Reservation reservation = new Reservation();
-//	  reservation.setReservationDate(resDate);
-//	  reservation.setOutboundFlight(outAir);
-//	  reservation.setPrice(price);
-//	  reservation.setPaid(paid);
-//	  reservation.setReturnFlight(retAir);
-//	  reservation.setPassengers(resPas);
-//	  reservation.setAgency(ag);
-//
-//	  return reservationRepository.save(reservation);
-//  }
+		for (String id : passengers) {
+			ReservationPassenger rp= reservationPassengerRepository.findById(Integer.parseInt(id)).get();
+			resPas.add(rp);
+		}
 
-  public List<Flight> findStatusReservation(int agencyId){
 
-	  List<Integer> flightsId = reservationRepository.getPastReservations(agencyId);
-	  List<Flight> flights = new ArrayList<>();
-	  flightsId.forEach(id -> {
-		 Flight flight = flightRepository.findById(id).orElse(null);
-		 flights.add(flight);
-	  });
-	  return flights;
-  }
+	  Reservation reservation = new Reservation();
+	  reservation.setReservationDate(resDate);
+	  reservation.setOutboundFlight(outAir);
+	  reservation.setPrice(pr);
+	  reservation.setPaid(pd);
+	  reservation.setReturnFlight(retAir);
+	  reservation.setPassengers(resPas);
+	  reservation.setAgency(ag);
 
-  public ReservationPassenger changeReservationPassenger(int reservationId, int ticketId, Passenger newPassenger) {
-    Reservation reservationToUpdate = reservationRepository.findById(reservationId).get();
-    ReservationPassenger ticketToUpdate = reservationToUpdate.getPassengers()
-    		.stream()
-    		.filter(p -> p.getId() == ticketId)
-    		.findFirst().get();
+	  return reservationRepository.save(reservation);
+	}
 
-    ticketToUpdate.setPassenger(newPassenger);
-    ticketRepository.save(ticketToUpdate);
-    return ticketToUpdate;
-  }
+	public Reservation deleteReservation(int id) {
+		Reservation reservation = reservationRepository.findById(id).orElse(null);
+		reservationRepository.delete(reservation);
+		return reservation;
+	}
 
-  public List<MonthlyProfit> getMonthlyProfits() {
-    LocalDate today = LocalDate.now();
+	public List<Flight> findStatusReservation(int agencyId) {
 
-    Date startDate = java.sql.Date.valueOf(today);
-    Date endDate = java.sql.Date.valueOf(today.minusMonths(6));
+		List<Integer> flightsId = reservationRepository.getPastReservations(agencyId);
+		List<Flight> flights = new ArrayList<>();
+		flightsId.forEach(id -> {
+			Flight flight = flightRepository.findById(id).orElse(null);
+			flights.add(flight);
+		});
+		return flights;
+	}
 
-	  return reservationRepository.getMonthlyProfits(startDate, endDate);
-  }
+	public ReservationPassenger changeReservationPassenger(int reservationId, int ticketId, Passenger newPassenger) {
+		Reservation reservationToUpdate = reservationRepository.findById(reservationId).get();
+		ReservationPassenger ticketToUpdate = reservationToUpdate.getPassengers().stream()
+				.filter(p -> p.getId() == ticketId).findFirst().get();
 
-  public List<ReservationPassenger> getBoardingTicketList(int reservationId, Agency agency) {
-    return reservationRepository.getBoardingTickets(reservationId, agency);
-  }
+		ticketToUpdate.setPassenger(newPassenger);
+		ticketRepository.save(ticketToUpdate);
+		return ticketToUpdate;
+	}
 
-  public List<ReservationPassenger> getFlightBoardingTickets(int flightId, int agencyId) {
-    Agency agency = agencyRepository.findById(agencyId).orElseGet(null);
-    return reservationRepository.getFlightBoardingTickets(flightId, agency);
-  }
+	public List<MonthlyProfit> getMonthlyProfits() {
+		LocalDate today = LocalDate.now();
 
-  public List<Airport> getTop10Destinations() {
-    LocalDate today = LocalDate.now();
-    LocalDate oneMonthEarlier = today.minusMonths(1);
+		Date startDate = java.sql.Date.valueOf(today);
+		Date endDate = java.sql.Date.valueOf(today.minusMonths(6));
 
-    Pageable top10 = PageRequest.of(0, 10);
-    Date dToday = java.sql.Date.valueOf(today);
-    Date dOneMonthEarlier = java.sql.Date.valueOf(oneMonthEarlier);
+		return reservationRepository.getMonthlyProfits(startDate, endDate);
+	}
 
-    return reservationRepository.findTop10Destinations(top10, dToday, dOneMonthEarlier);
-  }
+	public List<ReservationPassenger> getBoardingTicketList(int reservationId, Agency agency) {
+		return reservationRepository.getBoardingTickets(reservationId, agency);
+	}
+
+	public List<ReservationPassenger> getFlightBoardingTickets(int flightId, int agencyId) {
+		Agency agency = agencyRepository.findById(agencyId).orElseGet(null);
+		return reservationRepository.getFlightBoardingTickets(flightId, agency);
+	}
+
+	public List<Airport> getTop10Destinations() {
+		LocalDate today = LocalDate.now();
+		LocalDate oneMonthEarlier = today.minusMonths(1);
+
+		Pageable top10 = PageRequest.of(0, 10);
+		Date dToday = java.sql.Date.valueOf(today);
+		Date dOneMonthEarlier = java.sql.Date.valueOf(oneMonthEarlier);
+
+		return reservationRepository.findTop10Destinations(top10, dToday, dOneMonthEarlier);
+	}
 
 }
