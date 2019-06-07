@@ -21,9 +21,9 @@ import java.util.stream.Collectors;
 public class FlightService {
 	@Autowired
 	FlightRepository flightRepository;
-	
+
 	public Optional<Flight>findFlightById(int id) {
-		return flightRepository.findById(id);	
+		return flightRepository.findById(id);
 	}
 
 	// Q1
@@ -43,7 +43,7 @@ public class FlightService {
 		flights.put("return", returnFlights);
 		return flights;
 	}
-	
+
 	// Q2
 	public List<Flight> findComingFlights(Date date1) {
 		LocalDate rangeDate = date1.toLocalDate();
@@ -54,12 +54,12 @@ public class FlightService {
 				nextThreeDays);
 		return flights;
 	}
-	
+
 	// Q5
 	public Flight updateReservation(int flightId) {
 		Flight cancelledFlight = flightRepository.findById(flightId).orElse(null);
 		flightRepository.cancelFlight(flightId);
-		return cancelledFlight;	
+		return cancelledFlight;
 	}
 
 }

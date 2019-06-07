@@ -18,8 +18,8 @@ import org.springframework.stereotype.Repository;
 @Transactional
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, Integer> {
-	
 
+  /* Q1 */
   @Query("SELECT f "
   		+ "FROM Flight f "
   		+ "WHERE f.origin = :origin "
