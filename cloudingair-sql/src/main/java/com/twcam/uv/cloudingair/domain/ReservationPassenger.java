@@ -41,11 +41,11 @@ public class ReservationPassenger implements Serializable {
   @Column(name = "bag_number")
   private int bagNumber;
 
-  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
   @JoinColumn(name = "seat")
   private Seat seat;
 
-  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST }, fetch = FetchType.EAGER)
   @JsonIgnore
   private Reservation reservation;
 
