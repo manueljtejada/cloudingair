@@ -1,8 +1,7 @@
-version: '3'
+version: '3.7'
 
 services:
   cloudingairsql:
-    container_name: cloudingair-reservations
     build:
       context: ./cloudingair-sql
       dockerfile: Dockerfile
@@ -22,7 +21,6 @@ services:
       - DATABASE_PORT=3306
 
   cloudingairmongo:
-    container_name: cloudingair-airports
     build:
       context: ./cloudingair-mongo
       dockerfile: Dockerfile
@@ -36,13 +34,12 @@ services:
       - dbmongo
 
   discovery:
-    container_name: cloudingair-eureka
     build:
       context: ./discovery-server
       dockerfile: Dockerfile
     image: twcammaster.uv.es/proyecto-6-discovery:latest
     ports:
-      - "8761:8761"
+      - "80:8761"
     networks:
       - cloudingair-network
 
@@ -72,7 +69,8 @@ services:
 
 networks:
   cloudingair-network:
-    driver: bridge
+    external:
+      name: cloudingair-network
 volumes:
   mysqldata:
   mongodata:
