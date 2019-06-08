@@ -9,7 +9,7 @@ router="clouding-air-6-routing"
 securityGroup="lab1"
 flavor="lab1"
 machine="cloudingair-6-machine"
-
+dockerNetwork="cloudingair-network"
 
 # Creamos la red
 echo "Creating network $network"
@@ -64,7 +64,7 @@ eval $(docker-machine env $machine)
 docker swarm init
 
 #Creamos la red overlay
-docker network create -d overlay --attachable $network
+docker network create -d overlay --attachable $dockerNetwork
 
 #Lanzamos los servicios en el clúster creado
 docker stack deploy -c docker-compose.yml cloudingair

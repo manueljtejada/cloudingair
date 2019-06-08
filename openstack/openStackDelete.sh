@@ -9,8 +9,7 @@ flavor="lab1"
 machine="cloudingair-6-machine"
 ip=$(openstack floating ip list -c "Floating IP Address" -f value)
 port=$(openstack port list --router $router -f value | awk '{print $1;}')
-dockerNetwork="cloauding-netowrk"
-
+dockerNetwork="cloudingair-network"
 
 #Borramos todas las Docker machine localmente
 sudo docker-machine rm $(docker-machine ls) --force
@@ -44,4 +43,3 @@ openstack subnet delete $subnetwork
 
 # Borrar la red
 openstack network delete $network
-
