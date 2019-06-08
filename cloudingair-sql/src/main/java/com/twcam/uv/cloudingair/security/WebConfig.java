@@ -52,6 +52,9 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 			.cors().and()
 			.csrf().disable()
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
+			.antMatchers(HttpMethod.GET, "/api/flights").permitAll()
+			.antMatchers(HttpMethod.GET, "/api/flights/search").permitAll()
+			.antMatchers(HttpMethod.GET, "/api/flights/search/alternatives").permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
