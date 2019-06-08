@@ -7,8 +7,8 @@ services:
       context: ./cloudingair-sql
       dockerfile: Dockerfile
     image: cloudingairsql:latest
-    expose:
-      - "8080"
+    ports:
+      - "8080:8080"
     networks:
       - cloudingair-network
     depends_on:
@@ -27,8 +27,8 @@ services:
       context: ./cloudingair-mongo
       dockerfile: Dockerfile
     image: cloudingairmongo:latest
-    expose:
-      - "8081"
+    ports:
+      - "8081:8081"
     networks:
       - cloudingair-network
     depends_on:
@@ -42,7 +42,7 @@ services:
       dockerfile: Dockerfile
     image: discovery:latest
     ports:
-      - 8761:8761
+      - "8761:8761"
     networks:
       - cloudingair-network
 
@@ -54,6 +54,7 @@ services:
       - mysqldata:/var/lib/mysql
     networks:
       - cloudingair-network
+    command: --max_allowed_packet=32505856
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=cloudingair
