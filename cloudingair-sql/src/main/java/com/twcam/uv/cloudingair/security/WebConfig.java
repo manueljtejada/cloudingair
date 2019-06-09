@@ -26,7 +26,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebConfig extends WebSecurityConfigurerAdapter {
 
-	private static final String LOGIN_URL = "/login";
+	private static final String LOGIN_URL = "/api/login";
 	private UserDetailsService userDetailsService;
 
 	public WebConfig(UserDetailsService userDetailsService) {
