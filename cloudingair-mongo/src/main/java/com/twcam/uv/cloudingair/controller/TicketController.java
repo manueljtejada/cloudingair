@@ -21,7 +21,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/tickets")
+@RequestMapping("/register/tickets")
 public class TicketController {
   @Autowired
   TicketService service;
