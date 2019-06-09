@@ -55,6 +55,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.GET, "/api/flights").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/flights/search").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/flights/search/alternatives").permitAll()
+			.antMatchers(HttpMethod.GET, "/api/tickets/**").permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
