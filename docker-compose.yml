@@ -1,6 +1,20 @@
-version: '3.7'
+version: '3'
 
 services:
+  reverseproxy:
+    build: 
+      context: ./reverse-proxy
+      dockerfile: Dockerfile
+    image: twcammaster.uv.es/proyceto-6-reverseproxy:latest
+    ports: 
+      - "80:80"
+    networks:
+      - cloudingair-network
+    depends_on:
+      - discovery
+      - cloudingairsql
+      - cloudingairmongo
+
   cloudingairsql:
     build:
       context: ./cloudingair-sql
@@ -39,7 +53,7 @@ services:
       dockerfile: Dockerfile
     image: twcammaster.uv.es/proyecto-6-discovery:latest
     ports:
-      - "80:8761"
+      - "8761:8761"
     networks:
       - cloudingair-network
 
