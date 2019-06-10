@@ -1,0 +1,2712 @@
+[
+  {
+    "_id": 1,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-07-10T20:08:39.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-07-10T20:08:39.000Z"
+      },
+      "gate": 63,
+      "airportId": 19
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-11-30T17:40:10.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000000"
+          },
+          "name": "Bradtke and Sons"
+        },
+        "amount": 183.83
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-13T17:38:37.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000001"
+          },
+          "name": "Hansen-Carter"
+        },
+        "amount": 125.87
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-03-13T00:56:50.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-03-13T00:56:50.000Z"
+      },
+      "gate": 27,
+      "airportId": 87
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-05-12T02:16:07.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000002"
+          },
+          "name": "Steuber, Champlin and Lockman"
+        },
+        "amount": 152.87
+      },
+      {
+        "timestamp": {
+          "$date": "2018-11-17T16:39:37.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000003"
+          },
+          "name": "Berge-Graham"
+        },
+        "amount": 116.51
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-19T00:00:36.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000004"
+          },
+          "name": "Anderson-Yost"
+        },
+        "amount": 126.76
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-26T04:56:43.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000005"
+          },
+          "name": "Koss-Klocko"
+        },
+        "amount": 156.76
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-08-28T18:29:57.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-08-28T18:29:57.000Z"
+      },
+      "gate": 2,
+      "airportId": 68
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-07-26T07:09:20.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000006"
+          },
+          "name": "Schulist-Parisian"
+        },
+        "amount": 138.18
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-30T02:06:52.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000007"
+          },
+          "name": "Marvin-Koch"
+        },
+        "amount": 231.23
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-25T14:32:32.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000008"
+          },
+          "name": "Cole LLC"
+        },
+        "amount": 148.72
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-12-21T09:18:17.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-12-21T09:18:17.000Z"
+      },
+      "gate": 27,
+      "airportId": 57
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-17T17:45:56.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000009"
+          },
+          "name": "Considine-Kertzmann"
+        },
+        "amount": 220.09
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-06T13:24:11.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300000a"
+          },
+          "name": "Lind and Sons"
+        },
+        "amount": 259.19
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-09T01:21:40.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300000b"
+          },
+          "name": "Rowe-Auer"
+        },
+        "amount": 63.64
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-10T17:20:54.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300000c"
+          },
+          "name": "Zemlak Group"
+        },
+        "amount": 34.28
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-03T13:56:10.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-03T13:56:10.000Z"
+      },
+      "gate": 98,
+      "airportId": 83
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-04-04T18:37:40.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300000d"
+          },
+          "name": "Hegmann, Orn and Herman"
+        },
+        "amount": 106.67
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-12T23:05:25.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300000e"
+          },
+          "name": "Fay, Hermiston and Runte"
+        },
+        "amount": 157.57
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-21T23:42:18.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300000f"
+          },
+          "name": "Crooks, Pfannerstill and Quitzon"
+        },
+        "amount": 94.02
+      }
+    ]
+  },
+  {
+    "_id": 6,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-10T03:46:30.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-10T03:46:30.000Z"
+      },
+      "gate": 62,
+      "airportId": 29
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-04-27T08:05:39.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000010"
+          },
+          "name": "Nitzsche, Wolff and Hane"
+        },
+        "amount": 161.41
+      },
+      {
+        "timestamp": {
+          "$date": "2018-10-30T00:30:22.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000011"
+          },
+          "name": "Ernser Inc"
+        },
+        "amount": 236.6
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-01T06:03:31.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000012"
+          },
+          "name": "Armstrong-Beer"
+        },
+        "amount": 63.14
+      }
+    ]
+  },
+  {
+    "_id": 7,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-07-12T13:35:01.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-07-12T13:35:01.000Z"
+      },
+      "gate": 2,
+      "airportId": 24
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-27T04:22:58.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000013"
+          },
+          "name": "Watsica, Wyman and Adams"
+        },
+        "amount": 211.47
+      }
+    ]
+  },
+  {
+    "_id": 8,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-13T08:07:16.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-13T08:07:16.000Z"
+      },
+      "gate": 52,
+      "airportId": 27
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-04-30T20:01:19.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000014"
+          },
+          "name": "Berge-Pacocha"
+        },
+        "amount": 143.83
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-25T16:57:54.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000015"
+          },
+          "name": "Shanahan Group"
+        },
+        "amount": 220.4
+      },
+      {
+        "timestamp": {
+          "$date": "2018-12-24T01:40:23.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000016"
+          },
+          "name": "Gusikowski, Schultz and Marks"
+        },
+        "amount": 187.36
+      }
+    ]
+  },
+  {
+    "_id": 9,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-14T20:58:12.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-14T20:58:12.000Z"
+      },
+      "gate": 40,
+      "airportId": 56
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-07-29T17:45:29.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000017"
+          },
+          "name": "Beatty and Sons"
+        },
+        "amount": 234.64
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-28T07:20:16.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000018"
+          },
+          "name": "Mante-Simonis"
+        },
+        "amount": 282.72
+      }
+    ]
+  },
+  {
+    "_id": 10,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-02-10T02:58:06.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-02-10T02:58:06.000Z"
+      },
+      "gate": 78,
+      "airportId": 59
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-06-03T01:00:58.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000019"
+          },
+          "name": "Quigley LLC"
+        },
+        "amount": 186.83
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-14T12:49:44.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300001a"
+          },
+          "name": "Zboncak-Kuhlman"
+        },
+        "amount": 284.64
+      }
+    ]
+  },
+  {
+    "_id": 11,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-02-10T02:58:06.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-02-10T02:58:06.000Z"
+      },
+      "gate": 26,
+      "airportId": 9
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-09-18T06:52:55.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300001b"
+          },
+          "name": "Dicki, Sanford and Nienow"
+        },
+        "amount": 190.75
+      }
+    ]
+  },
+  {
+    "_id": 12,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-03-28T10:00:34.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-03-28T10:00:34.000Z"
+      },
+      "gate": 50,
+      "airportId": 12
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-02-02T00:01:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300001c"
+          },
+          "name": "Becker-Barrows"
+        },
+        "amount": 297.26
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-30T14:02:30.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300001d"
+          },
+          "name": "O'Conner, Boyer and Satterfield"
+        },
+        "amount": 60.93
+      },
+      {
+        "timestamp": {
+          "$date": "2018-10-05T08:27:44.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300001e"
+          },
+          "name": "Boehm Inc"
+        },
+        "amount": 265.79
+      },
+      {
+        "timestamp": {
+          "$date": "2018-06-10T01:32:02.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300001f"
+          },
+          "name": "Kreiger-Anderson"
+        },
+        "amount": 172.84
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-10T06:02:26.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000020"
+          },
+          "name": "Haag, O'Kon and Emard"
+        },
+        "amount": 242.66
+      }
+    ]
+  },
+  {
+    "_id": 13,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-04T20:21:29.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-04T20:21:29.000Z"
+      },
+      "gate": 39,
+      "airportId": 53
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-03-03T04:23:16.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000021"
+          },
+          "name": "Walsh-Willms"
+        },
+        "amount": 42.64
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-16T01:59:24.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000022"
+          },
+          "name": "McGlynn Group"
+        },
+        "amount": 252.3
+      }
+    ]
+  },
+  {
+    "_id": 14,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-11-21T05:16:44.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-11-21T07:19:44.000Z"
+      },
+      "gate": 28,
+      "airportId": 2
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-10-30T01:54:02.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000023"
+          },
+          "name": "Schneider, Stracke and Mohr"
+        },
+        "amount": 92.44
+      },
+      {
+        "timestamp": {
+          "$date": "2018-12-26T04:13:04.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000024"
+          },
+          "name": "Kuhic, Strosin and Ruecker"
+        },
+        "amount": 55.76
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-01T00:50:30.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000025"
+          },
+          "name": "Rau-Waters"
+        },
+        "amount": 56.64
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-30T00:23:24.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000026"
+          },
+          "name": "Braun, Mosciski and Bednar"
+        },
+        "amount": 234.83
+      }
+    ]
+  },
+  {
+    "_id": 15,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-07-24T04:50:17.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-07-24T08:52:17.000Z"
+      },
+      "gate": 52,
+      "airportId": 95
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-09-22T04:22:25.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000027"
+          },
+          "name": "Lemke Group"
+        },
+        "amount": 68.34
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-13T07:03:03.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000028"
+          },
+          "name": "Mertz, Hyatt and Roberts"
+        },
+        "amount": 122.6
+      }
+    ]
+  },
+  {
+    "_id": 16,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-06-28T00:13:28.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-06-28T00:14:18.000Z"
+      },
+      "gate": 83,
+      "airportId": 9
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-11-19T02:16:33.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000029"
+          },
+          "name": "O'Conner, Fisher and Turcotte"
+        },
+        "amount": 109.12
+      },
+      {
+        "timestamp": {
+          "$date": "2018-11-08T15:14:33.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300002a"
+          },
+          "name": "Rowe and Sons"
+        },
+        "amount": 94.69
+      },
+      {
+        "timestamp": {
+          "$date": "2018-11-18T16:40:17.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300002b"
+          },
+          "name": "Hessel LLC"
+        },
+        "amount": 143.18
+      },
+      {
+        "timestamp": {
+          "$date": "2018-10-04T19:20:56.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300002c"
+          },
+          "name": "Schaefer, Waters and Hartmann"
+        },
+        "amount": 30.8
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-02T19:32:35.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300002d"
+          },
+          "name": "Douglas, Wisoky and Moen"
+        },
+        "amount": 215.0
+      }
+    ]
+  },
+  {
+    "_id": 17,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-22T09:57:15.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-22T11:27:15.000Z"
+      },
+      "gate": 18,
+      "airportId": 3
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-12-05T23:42:59.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300002e"
+          },
+          "name": "Harris, Moen and Simonis"
+        },
+        "amount": 239.83
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-17T21:36:36.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300002f"
+          },
+          "name": "Collins-Fritsch"
+        },
+        "amount": 282.33
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-10T14:09:15.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000030"
+          },
+          "name": "Rohan-Ziemann"
+        },
+        "amount": 101.88
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-03T23:35:08.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000031"
+          },
+          "name": "Schmitt LLC"
+        },
+        "amount": 234.1
+      }
+    ]
+  },
+  {
+    "_id": 18,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-07-17T16:46:15.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-07-17T18:46:15.000Z"
+      },
+      "gate": 43,
+      "airportId": 29
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-09-01T22:45:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000032"
+          },
+          "name": "Ziemann and Sons"
+        },
+        "amount": 85.51
+      }
+    ]
+  },
+  {
+    "_id": 19,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-07-24T21:36:11.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-07-24T23:36:11.000Z"
+      },
+      "gate": 82,
+      "airportId": 96
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-12-04T02:09:06.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000033"
+          },
+          "name": "Gerhold-Ryan"
+        },
+        "amount": 186.95
+      },
+      {
+        "timestamp": {
+          "$date": "2019-06-04T22:29:17.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000034"
+          },
+          "name": "Will and Sons"
+        },
+        "amount": 285.48
+      }
+    ]
+  },
+  {
+    "_id": 20,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-10T06:38:28.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-10T07:18:28.000Z"
+      },
+      "gate": 72,
+      "airportId": 86
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-12-14T23:28:52.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000035"
+          },
+          "name": "Kunde-Wehner"
+        },
+        "amount": 22.13
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-16T08:56:20.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000036"
+          },
+          "name": "Weimann Group"
+        },
+        "amount": 31.56
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-15T17:08:58.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000037"
+          },
+          "name": "Greenholt, Baumbach and Ziemann"
+        },
+        "amount": 135.81
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-22T23:19:48.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000038"
+          },
+          "name": "Cartwright LLC"
+        },
+        "amount": 220.19
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-22T21:28:15.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000039"
+          },
+          "name": "Zboncak, Homenick and Lind"
+        },
+        "amount": 275.58
+      }
+    ]
+  },
+  {
+    "_id": 21,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-05-19T03:41:37.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-05-19T05:49:37.000Z"
+      },
+      "gate": 25,
+      "airportId": 61
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-03-08T20:08:41.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300003a"
+          },
+          "name": "Johnston-Douglas"
+        },
+        "amount": 193.47
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-05T01:23:24.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300003b"
+          },
+          "name": "Lowe-Terry"
+        },
+        "amount": 69.25
+      },
+      {
+        "timestamp": {
+          "$date": "2018-11-28T07:13:13.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300003c"
+          },
+          "name": "Nienow, Schroeder and Wuckert"
+        },
+        "amount": 45.73
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-02T17:48:14.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300003d"
+          },
+          "name": "Lueilwitz, Bartell and Torp"
+        },
+        "amount": 28.6
+      }
+    ]
+  },
+  {
+    "_id": 22,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-11T06:25:39.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-11T08:17:39.000Z"
+      },
+      "gate": 92,
+      "airportId": 55
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-04-27T09:50:44.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300003e"
+          },
+          "name": "Cummings, Crooks and Gleichner"
+        },
+        "amount": 269.71
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-03T22:33:55.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300003f"
+          },
+          "name": "Wunsch, Kunze and Sawayn"
+        },
+        "amount": 213.25
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-19T15:26:27.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000040"
+          },
+          "name": "Lindgren-Zulauf"
+        },
+        "amount": 56.93
+      }
+    ]
+  },
+  {
+    "_id": 23,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-12-15T03:11:52.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-12-15T07:19:52.000Z"
+      },
+      "gate": 67,
+      "airportId": 35
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-10-24T05:29:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000041"
+          },
+          "name": "Greenfelder, Stark and Gerlach"
+        },
+        "amount": 61.53
+      }
+    ]
+  },
+  {
+    "_id": 24,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-06-05T01:25:13.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-06-05T03:25:13.000Z"
+      },
+      "gate": 97,
+      "airportId": 71
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-10-14T22:43:33.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000042"
+          },
+          "name": "Lueilwitz, Runolfsson and Kris"
+        },
+        "amount": 251.29
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-14T19:44:35.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000043"
+          },
+          "name": "Oberbrunner-Jaskolski"
+        },
+        "amount": 32.79
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-09T17:14:35.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000044"
+          },
+          "name": "Hirthe, Klein and Franecki"
+        },
+        "amount": 91.88
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-16T10:06:23.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000045"
+          },
+          "name": "Dare-Gutkowski"
+        },
+        "amount": 192.69
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-25T14:35:24.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000046"
+          },
+          "name": "Mayert-Denesik"
+        },
+        "amount": 259.48
+      }
+    ]
+  },
+  {
+    "_id": 25,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-22T17:19:31.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-22T18:29:31.000Z"
+      },
+      "gate": 87,
+      "airportId": 29
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-07-27T01:44:04.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000047"
+          },
+          "name": "Beahan Inc"
+        },
+        "amount": 43.17
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-12T15:20:04.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000048"
+          },
+          "name": "Doyle-Ledner"
+        },
+        "amount": 269.74
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-12T00:32:16.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000049"
+          },
+          "name": "Emmerich, Mueller and Kiehn"
+        },
+        "amount": 133.76
+      }
+    ]
+  },
+  {
+    "_id": 26,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-11-01T10:20:42.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-11-01T13:10:42.000Z"
+      },
+      "gate": 98,
+      "airportId": 27
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-04-28T03:39:05.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300004a"
+          },
+          "name": "Kohler-Boehm"
+        },
+        "amount": 87.68
+      },
+      {
+        "timestamp": {
+          "$date": "2018-11-16T15:46:58.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300004b"
+          },
+          "name": "Leffler-Kemmer"
+        },
+        "amount": 135.32
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-13T15:56:25.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300004c"
+          },
+          "name": "Hickle, Deckow and Watsica"
+        },
+        "amount": 281.41
+      },
+      {
+        "timestamp": {
+          "$date": "2018-12-25T01:50:12.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300004d"
+          },
+          "name": "Feest LLC"
+        },
+        "amount": 232.66
+      }
+    ]
+  },
+  {
+    "_id": 27,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-05-26T16:48:09.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-05-26T17:18:09.000Z"
+      },
+      "gate": 3,
+      "airportId": 80
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-12-30T19:18:53.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300004e"
+          },
+          "name": "Harris-Kemmer"
+        },
+        "amount": 243.19
+      }
+    ]
+  },
+  {
+    "_id": 28,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-25T17:56:19.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-25T18:16:19.000Z"
+      },
+      "gate": 87,
+      "airportId": 69
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-09-29T02:35:01.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300004f"
+          },
+          "name": "Rohan, Farrell and Russel"
+        },
+        "amount": 92.7
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-19T20:42:29.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000050"
+          },
+          "name": "Tillman-Braun"
+        },
+        "amount": 213.7
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-29T16:26:19.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000051"
+          },
+          "name": "Will, Gibson and Auer"
+        },
+        "amount": 186.65
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-04T21:20:07.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000052"
+          },
+          "name": "Treutel Group"
+        },
+        "amount": 209.02
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-18T15:18:47.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000053"
+          },
+          "name": "Waters Group"
+        },
+        "amount": 291.38
+      }
+    ]
+  },
+  {
+    "_id": 29,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-06-18T05:02:52.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-06-18T07:02:52.000Z"
+      },
+      "gate": 72,
+      "airportId": 68
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-10-12T08:35:36.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000054"
+          },
+          "name": "Hilll Inc"
+        },
+        "amount": 50.33
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-31T08:47:06.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000055"
+          },
+          "name": "Schoen, Koss and Keeling"
+        },
+        "amount": 26.6
+      },
+      {
+        "timestamp": {
+          "$date": "2018-12-01T03:14:57.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000056"
+          },
+          "name": "Lynch-Barrows"
+        },
+        "amount": 239.43
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-03T04:02:46.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000057"
+          },
+          "name": "Zieme, Parker and Gleason"
+        },
+        "amount": 229.43
+      },
+      {
+        "timestamp": {
+          "$date": "2019-06-01T01:23:40.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000058"
+          },
+          "name": "Jacobi, Mitchell and O'Conner"
+        },
+        "amount": 96.39
+      }
+    ]
+  },
+  {
+    "_id": 30,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-06-24T17:50:07.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-06-24T18:20:07.000Z"
+      },
+      "gate": 41,
+      "airportId": 38
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-05-14T05:37:59.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000059"
+          },
+          "name": "Schaden-Anderson"
+        },
+        "amount": 11.59
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-17T20:58:58.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300005a"
+          },
+          "name": "DuBuque, Cartwright and Schultz"
+        },
+        "amount": 267.33
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-11T19:19:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300005b"
+          },
+          "name": "Marquardt-Graham"
+        },
+        "amount": 116.65
+      },
+      {
+        "timestamp": {
+          "$date": "2018-10-12T11:57:24.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300005c"
+          },
+          "name": "Stracke and Sons"
+        },
+        "amount": 140.12
+      }
+    ]
+  },
+  {
+    "_id": 31,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-04-11T04:30:20.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-04-11T05:20:20.000Z"
+      },
+      "gate": 76,
+      "airportId": 36
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-02T07:12:41.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300005d"
+          },
+          "name": "Howe, Rempel and Jacobs"
+        },
+        "amount": 287.53
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-07T07:15:11.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300005e"
+          },
+          "name": "Steuber-Emard"
+        },
+        "amount": 106.42
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-17T11:31:15.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300005f"
+          },
+          "name": "Kiehn and Sons"
+        },
+        "amount": 216.98
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-18T21:39:12.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000060"
+          },
+          "name": "Cummerata-Lueilwitz"
+        },
+        "amount": 162.77
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-11T16:00:31.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000061"
+          },
+          "name": "Schamberger Inc"
+        },
+        "amount": 195.0
+      }
+    ]
+  },
+  {
+    "_id": 32,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-20T19:59:19.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-20T21:19:19.000Z"
+      },
+      "gate": 29,
+      "airportId": 62
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-23T22:33:07.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000062"
+          },
+          "name": "Beahan and Sons"
+        },
+        "amount": 267.64
+      },
+      {
+        "timestamp": {
+          "$date": "2018-10-08T14:23:34.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000063"
+          },
+          "name": "Osinski, Dare and Dare"
+        },
+        "amount": 174.68
+      }
+    ]
+  },
+  {
+    "_id": 33,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-11-11T18:26:27.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-11-11T22:29:27.000Z"
+      },
+      "gate": 97,
+      "airportId": 37
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-06-19T16:04:22.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000064"
+          },
+          "name": "Casper-Bogisich"
+        },
+        "amount": 106.98
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-04T21:10:22.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000065"
+          },
+          "name": "Sawayn, Toy and Reilly"
+        },
+        "amount": 88.27
+      },
+      {
+        "timestamp": {
+          "$date": "2018-06-27T05:52:46.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000066"
+          },
+          "name": "Volkman and Sons"
+        },
+        "amount": 83.96
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-27T08:29:42.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000067"
+          },
+          "name": "Lesch-Dietrich"
+        },
+        "amount": 183.84
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-04T03:53:54.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000068"
+          },
+          "name": "Weber Group"
+        },
+        "amount": 214.81
+      }
+    ]
+  },
+  {
+    "_id": 34,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-10-30T00:04:58.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-10-30T08:09:58.000Z"
+      },
+      "gate": 17,
+      "airportId": 38
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-04-16T12:51:28.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000069"
+          },
+          "name": "Kilback Group"
+        },
+        "amount": 268.39
+      },
+      {
+        "timestamp": {
+          "$date": "2018-07-27T08:20:05.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300006a"
+          },
+          "name": "Willms, Boyle and Gerhold"
+        },
+        "amount": 261.59
+      }
+    ]
+  },
+  {
+    "_id": 35,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-08-20T03:06:17.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-08-20T09:09:17.000Z"
+      },
+      "gate": 21,
+      "airportId": 95
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-11-04T16:49:38.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300006b"
+          },
+          "name": "Simonis, Will and Weimann"
+        },
+        "amount": 15.49
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-19T22:33:22.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300006c"
+          },
+          "name": "Lueilwitz Inc"
+        },
+        "amount": 200.88
+      }
+    ]
+  },
+  {
+    "_id": 36,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-07-01T12:40:32.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-07-01T17:20:32.000Z"
+      },
+      "gate": 73,
+      "airportId": 59
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-25T11:08:34.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300006d"
+          },
+          "name": "Rempel Group"
+        },
+        "amount": 266.23
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-14T17:56:04.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300006e"
+          },
+          "name": "Mayer Group"
+        },
+        "amount": 193.2
+      },
+      {
+        "timestamp": {
+          "$date": "2018-06-27T17:48:52.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300006f"
+          },
+          "name": "Bartell, Schiller and Heathcote"
+        },
+        "amount": 148.49
+      }
+    ]
+  },
+  {
+    "_id": 37,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-12-21T08:36:03.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-12-21T20:16:03.000Z"
+      },
+      "gate": 65,
+      "airportId": 96
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-08-25T21:18:18.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000070"
+          },
+          "name": "Gleichner and Sons"
+        },
+        "amount": 104.18
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-22T07:07:53.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000071"
+          },
+          "name": "Wolf-Heller"
+        },
+        "amount": 240.9
+      }
+    ]
+  },
+  {
+    "_id": 38,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-04-30T01:49:41.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-04-30T02:29:28.000Z"
+      },
+      "gate": 25,
+      "airportId": 79
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-06-21T23:23:31.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000072"
+          },
+          "name": "Raynor-Osinski"
+        },
+        "amount": 285.64
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-24T08:37:48.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000073"
+          },
+          "name": "Stroman-Stracke"
+        },
+        "amount": 105.8
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-15T19:38:49.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000074"
+          },
+          "name": "Strosin and Sons"
+        },
+        "amount": 257.48
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-05T07:48:21.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000075"
+          },
+          "name": "McCullough, Kutch and Gottlieb"
+        },
+        "amount": 180.03
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-10T13:00:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000076"
+          },
+          "name": "Effertz, Langworth and Connelly"
+        },
+        "amount": 44.0
+      }
+    ]
+  },
+  {
+    "_id": 39,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-01-08T05:10:19.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-01-08T05:59:29.000Z"
+      },
+      "gate": 80,
+      "airportId": 52
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-09-07T03:11:29.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000077"
+          },
+          "name": "Lubowitz and Sons"
+        },
+        "amount": 58.89
+      },
+      {
+        "timestamp": {
+          "$date": "2018-06-11T17:47:34.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000078"
+          },
+          "name": "Quigley-Legros"
+        },
+        "amount": 122.47
+      },
+      {
+        "timestamp": {
+          "$date": "2018-10-08T04:49:34.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000079"
+          },
+          "name": "Kilback-Kuvalis"
+        },
+        "amount": 240.95
+      }
+    ]
+  },
+  {
+    "_id": 40,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-12-05T01:10:57.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-12-05T03:20:57.000Z"
+      },
+      "gate": 62,
+      "airportId": 2
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-10-26T03:02:15.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300007a"
+          },
+          "name": "Hane-Oberbrunner"
+        },
+        "amount": 146.53
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-01T19:55:46.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300007b"
+          },
+          "name": "Schulist-Kozey"
+        },
+        "amount": 5.5
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-27T14:07:54.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300007c"
+          },
+          "name": "D'Amore LLC"
+        },
+        "amount": 64.53
+      },
+      {
+        "timestamp": {
+          "$date": "2018-06-09T23:23:25.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300007d"
+          },
+          "name": "Rodriguez-Gaylord"
+        },
+        "amount": 285.17
+      }
+    ]
+  },
+  {
+    "_id": 41,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-03-07T07:31:27.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-03-07T08:21:27.000Z"
+      },
+      "gate": 28,
+      "airportId": 47
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-06-09T00:51:47.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300007e"
+          },
+          "name": "D'Amore-Boehm"
+        },
+        "amount": 40.39
+      }
+    ]
+  },
+  {
+    "_id": 42,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-01-17T11:02:01.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-01-17T13:22:01.000Z"
+      },
+      "gate": 42,
+      "airportId": 75
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-03-07T16:26:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300007f"
+          },
+          "name": "Halvorson-West"
+        },
+        "amount": 83.63
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-09T21:30:39.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000080"
+          },
+          "name": "Hudson and Sons"
+        },
+        "amount": 267.6
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-27T19:24:53.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000081"
+          },
+          "name": "Douglas, Gislason and Lubowitz"
+        },
+        "amount": 99.32
+      }
+    ]
+  },
+  {
+    "_id": 43,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-20T13:32:30.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-20T14:22:30.000Z"
+      },
+      "gate": 90,
+      "airportId": 56
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-06-09T20:35:38.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000082"
+          },
+          "name": "Brown, Waelchi and Bogisich"
+        },
+        "amount": 208.26
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-29T10:56:12.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000083"
+          },
+          "name": "Roob-Welch"
+        },
+        "amount": 235.39
+      }
+    ]
+  },
+  {
+    "_id": 44,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-08-30T00:14:26.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-08-30T03:44:26.000Z"
+      },
+      "gate": 83,
+      "airportId": 75
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-29T06:19:48.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000084"
+          },
+          "name": "Schaden-Gutmann"
+        },
+        "amount": 125.61
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-08T04:35:40.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000085"
+          },
+          "name": "Rogahn, Kutch and Steuber"
+        },
+        "amount": 51.25
+      },
+      {
+        "timestamp": {
+          "$date": "2019-05-01T12:04:08.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000086"
+          },
+          "name": "Blick, Christiansen and Konopelski"
+        },
+        "amount": 212.46
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-16T21:57:37.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000087"
+          },
+          "name": "Dicki, Parker and Armstrong"
+        },
+        "amount": 210.29
+      }
+    ]
+  },
+  {
+    "_id": 45,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-09-02T20:08:38.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-09-02T21:28:38.000Z"
+      },
+      "gate": 30,
+      "airportId": 90
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-07-16T09:08:18.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000088"
+          },
+          "name": "Weissnat Group"
+        },
+        "amount": 176.54
+      }
+    ]
+  },
+  {
+    "_id": 46,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-04-22T20:37:12.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-04-22T22:17:12.000Z"
+      },
+      "gate": 86,
+      "airportId": 55
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-08-19T22:53:45.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000089"
+          },
+          "name": "Pfeffer, Bergnaum and Ryan"
+        },
+        "amount": 55.78
+      },
+      {
+        "timestamp": {
+          "$date": "2019-02-15T00:21:00.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300008a"
+          },
+          "name": "Jones LLC"
+        },
+        "amount": 263.59
+      }
+    ]
+  },
+  {
+    "_id": 47,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2018-06-18T21:56:41.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2018-06-18T23:16:41.000Z"
+      },
+      "gate": 53,
+      "airportId": 22
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-12-22T21:17:41.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300008b"
+          },
+          "name": "Wunsch-Bailey"
+        },
+        "amount": 167.5
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-08T14:11:26.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300008c"
+          },
+          "name": "Spinka-Stamm"
+        },
+        "amount": 223.72
+      },
+      {
+        "timestamp": {
+          "$date": "2019-01-01T01:30:31.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300008d"
+          },
+          "name": "Jones Group"
+        },
+        "amount": 66.65
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-07T21:21:19.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300008e"
+          },
+          "name": "Hansen-Wolff"
+        },
+        "amount": 234.67
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-19T18:30:42.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300008f"
+          },
+          "name": "Wisozk and Sons"
+        },
+        "amount": 197.19
+      }
+    ]
+  },
+  {
+    "_id": 48,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-02-10T22:29:27.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-02-10T23:49:27.000Z"
+      },
+      "gate": 76,
+      "airportId": 61
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-01-13T02:19:29.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000090"
+          },
+          "name": "Haag LLC"
+        },
+        "amount": 30.47
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-20T09:54:43.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000091"
+          },
+          "name": "Little, Koss and Labadie"
+        },
+        "amount": 174.67
+      },
+      {
+        "timestamp": {
+          "$date": "2018-09-08T01:30:53.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000092"
+          },
+          "name": "Bradtke-Barrows"
+        },
+        "amount": 156.67
+      }
+    ]
+  },
+  {
+    "_id": 49,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-02-28T03:32:23.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-02-28T05:31:23.000Z"
+      },
+      "gate": 100,
+      "airportId": 22
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2018-09-07T14:39:29.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000093"
+          },
+          "name": "Oberbrunner-Cassin"
+        },
+        "amount": 31.13
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-29T16:36:36.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000094"
+          },
+          "name": "Gerlach-Mayer"
+        },
+        "amount": 14.56
+      },
+      {
+        "timestamp": {
+          "$date": "2019-03-21T16:24:25.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000095"
+          },
+          "name": "Connelly Inc"
+        },
+        "amount": 292.59
+      }
+    ]
+  },
+  {
+    "_id": 50,
+    "securityCheck": {
+      "timestamp": {
+        "$date": "2019-04-04T19:34:21.000Z"
+      }
+    },
+    "boarding": {
+      "timestamp": {
+        "$date": "2019-04-04T22:54:21.000Z"
+      },
+      "gate": 97,
+      "airportId": 88
+    },
+    "purchases": [
+      {
+        "timestamp": {
+          "$date": "2019-03-04T13:33:51.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000096"
+          },
+          "name": "Koss-Waelchi"
+        },
+        "amount": 235.53
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-01T19:05:09.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000097"
+          },
+          "name": "Doyle, Homenick and Harber"
+        },
+        "amount": 275.91
+      },
+      {
+        "timestamp": {
+          "$date": "2018-08-10T01:15:56.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000098"
+          },
+          "name": "Turcotte and Sons"
+        },
+        "amount": 128.26
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-11T22:07:43.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae6583000099"
+          },
+          "name": "Orn Group"
+        },
+        "amount": 13.29
+      },
+      {
+        "timestamp": {
+          "$date": "2019-04-02T23:39:40.000Z"
+        },
+        "store": {
+          "_id": {
+            "$oid": "5cf95ff5fc13ae658300009a"
+          },
+          "name": "Towne, Waters and Kilback"
+        },
+        "amount": 210.76
+      }
+    ]
+  }
+]
