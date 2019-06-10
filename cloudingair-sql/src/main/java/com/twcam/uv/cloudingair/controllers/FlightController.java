@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -78,14 +77,6 @@ public class FlightController {
 
 		return flights;
 	}
-//
-//	@GetMapping("/test")
-//	public Agency user(Principal principal)
-//	{
-//		Agency agency = agencyRepository.findByUsername(principal.getName());
-//		// System.out.println("Agencia en el controlador: " + agency);
-//		return agency;
-//	}
 
 	// Q2
 	@GetMapping("/alternatives")

@@ -2,12 +2,8 @@ package com.twcam.uv.cloudingair.domain;
 
 import java.util.List;
 
-import com.twcam.uv.cloudingair.annotation.CascadeSave;
-
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,11 +24,5 @@ public class Ticket {
   public Ticket(int id, int airportId) {
     this.id = id;
     this.airportId = airportId;
-  }
-
-  public Ticket(SecurityCheck securityCheck, Boarding boarding, List<Purchase> purchases) {
-    this.securityCheck = securityCheck;
-    this.boarding = boarding;
-    this.purchases = purchases;
   }
 }

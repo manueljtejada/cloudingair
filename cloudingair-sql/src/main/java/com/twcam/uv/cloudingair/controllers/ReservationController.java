@@ -89,15 +89,8 @@ public class ReservationController {
 		return reservationService.getBoardingTicketList(reservationId, agency);
 	}
 
-
-	@GetMapping("/flights/{flightId}/tickets")
-	public List<ReservationPassenger> getFlightBoardingTickets(Principal principal, @PathVariable("flightId") int flightId) {
-		Agency agency = agencyRepository.findByUsername(principal.getName());
-		return reservationService.getFlightBoardingTickets(flightId, agency.getId());
-	}
-
 	// Q5.2
-	@PutMapping("/reservations/{reservationId}/tickets/{ticketId}")
+	@PutMapping("/{reservationId}/tickets/{ticketId}")
 	public ResponseEntity<ReservationPassenger> changeTicket(Principal principal,
 											@PathVariable("reservationId") int reservationId,
 											@PathVariable("ticketId") int ticketId,
