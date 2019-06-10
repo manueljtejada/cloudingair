@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -25,9 +24,6 @@ import reactor.core.publisher.Mono;
 public class TicketController {
   @Autowired
   TicketService service;
-
-  @Autowired
-  RestTemplate restTemplate;
 
 	@GetMapping()
   public Flux<Ticket> getAllTickets() {
@@ -40,14 +36,12 @@ public class TicketController {
   }
 
   @PutMapping("/{ticketId}/security")
-  public Mono<Ticket> registerSecurityCheck(@PathVariable int ticketId, @RequestBody SecurityCheck securityCheck) {
-    return service.registerSecurityCheck(ticketId, securityCheck);
+  public Mono<Ticket> registerSecurityCheck(@PathVariable int ticketId) {
+    return service.registerSecurityCheck(ticketId);
   }
 
   @PutMapping("/{ticketId}/boarding")
   public Mono<Ticket> registerBoarding(@PathVariable int ticketId, @RequestBody Boarding boarding) {
-    int airportId = restTemplate.getForObject("http://cloudingair-sql/api/tickets/" + ticketId + "/destination", Integer.class);
-    boarding.setAirportId(airportId);
     return service.registerBoarding(ticketId, boarding);
   }
 

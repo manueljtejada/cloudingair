@@ -37,8 +37,9 @@ public class TicketService {
     return Mono.just(repository.findById(id).orElse(null));
   }
 
-  public Mono<Ticket> registerSecurityCheck(int ticketId, SecurityCheck securityCheck) {
+  public Mono<Ticket> registerSecurityCheck(int ticketId) {
     Ticket ticket = repository.findById(ticketId).orElse(null);
+    SecurityCheck securityCheck = new SecurityCheck();
 
     securityCheck.setId(new ObjectId());
     securityCheck.setTimestamp(LocalDateTime.now());
