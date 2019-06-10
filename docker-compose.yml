@@ -74,8 +74,8 @@ services:
 
   dbmongo:
     image: mongo
-    expose:
-      - "27017"
+    ports:
+      - "27018:27017"
     networks:
       - cloudingair-network
     volumes:
