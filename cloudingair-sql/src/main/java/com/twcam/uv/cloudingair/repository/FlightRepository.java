@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.Flight;
-import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

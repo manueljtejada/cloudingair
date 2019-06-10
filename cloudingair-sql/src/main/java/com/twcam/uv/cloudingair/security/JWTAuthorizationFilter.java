@@ -12,7 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.repository.AgencyRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

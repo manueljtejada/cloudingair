@@ -19,14 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.twcam.uv.cloudingair.assembler.ReservationResourceAssembler;
 import java.security.Principal;
-import java.util.List;
 
-import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
-import com.twcam.uv.cloudingair.domain.Passenger;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
 import com.twcam.uv.cloudingair.repository.AgencyRepository;

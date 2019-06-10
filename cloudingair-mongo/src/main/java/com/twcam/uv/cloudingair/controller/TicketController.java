@@ -1,10 +1,7 @@
 package com.twcam.uv.cloudingair.controller;
 
-import java.util.List;
-
 import com.twcam.uv.cloudingair.domain.Boarding;
 import com.twcam.uv.cloudingair.domain.Purchase;
-import com.twcam.uv.cloudingair.domain.SecurityCheck;
 import com.twcam.uv.cloudingair.domain.Ticket;
 import com.twcam.uv.cloudingair.service.TicketService;
 

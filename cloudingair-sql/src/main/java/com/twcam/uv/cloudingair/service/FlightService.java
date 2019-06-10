@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @Service
 public class FlightService {
@@ -25,7 +22,7 @@ public class FlightService {
 	public Flight findFlightById(int id) {
 		return flightRepository.findById(id).orElse(null);
 	}
-	
+
 	public List<Flight> findAllFlights() {
 		return flightRepository.findAll();
 	}

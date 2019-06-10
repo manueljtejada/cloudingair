@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import com.twcam.uv.cloudingair.domain.Agency;
 import com.twcam.uv.cloudingair.domain.Airport;
-import com.twcam.uv.cloudingair.domain.Flight;
 import com.twcam.uv.cloudingair.domain.MonthlyProfit;
 import com.twcam.uv.cloudingair.domain.Reservation;
 import com.twcam.uv.cloudingair.domain.ReservationPassenger;
@@ -26,23 +25,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   @Query("UPDATE Reservation r SET r.paid = True WHERE r.id = :reservationId")
   public void pay(@Param("reservationId") int reservationId);
 
-  /* Q3.1 */
-  // @Query("SELECT r.outboundFlight, r.returnFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate < NOW() OR r.returnFlight.departureDate < NOW()")
-  // public List<Flight> getPastReservations(@Param("agency") Agency agency);
-
-
-
-//	@Query("SELECT r.outboundFlight, r.returnFlight, "
-//	+ "CASE "
-//	+ "WHEN DATEDIFF(now(), r.outboundFlight.departureDate) <= 0 THEN 'Past' "
-//	+ "WHEN DATEDIFF(now(), r.outboundFlight.departureDate) >= 0 THEN 'Future' "
-//	+ "WHEN DATEDIFF(now(), r.returnFlight.departureDate) <= 0 THEN 'Past' "
-//	+ "WHEN DATEDIFF(now(), r.returnFlight.departureDate) >= 0 THEN 'Future' "
-//	+ "END "
-//	+ "FROM Reservation r "
-//	+ "WHERE r.agency = :agency")
-
-
+  /* Q3 */
    @Query(value ="SELECT of.id, of.boarding_time, of.company, of.departure_date, "
    		+ "of.departure_time, of.duration, of.flight_number, of.price, "
    		+ "of.reservation_start_date, of.destination, of.origin, of.plane "
@@ -63,10 +46,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
    		, nativeQuery = true )
    public List<Integer> getPastReservations(@Param("agency") int agency);
 
-  /* Q3.2 */
-  // @Query("SELECT r.outboundFlight FROM Reservation r WHERE r.agency = :agency AND r.outboundFlight.departureDate > NOW()")
-  // public List<Flight> getFutureReservations(@Param("agency") Agency agency);
-
   /* Q4 */
   @Query("SELECT r.passengers "
   		+ "FROM Reservation r "
@@ -75,6 +54,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
   		+ "AND DATEDIFF(NOW(), r.outboundFlight.departureDate) = 1")
   public List<ReservationPassenger> getBoardingTickets(@Param("reservationId") int reservationId, @Param("agency") Agency agency);
 
+	/* Q4 (variación) */
   @Query("SELECT r.passengers "
   		+ "FROM Reservation r "
   		+ "WHERE r.outboundFlight.id = :flightId "
