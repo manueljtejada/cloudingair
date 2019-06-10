@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,7 +28,7 @@ import com.twcam.uv.cloudingair.service.FlightService;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
 @RestController
-@RequestMapping("/api/{agencyId}/flights")
+@RequestMapping("/api/flights")
 public class FlightController {
 
 	@Autowired
@@ -43,10 +42,10 @@ public class FlightController {
 
 	@Autowired
 	private AgencyRepository agencyRepository;
-	
+
 	@Autowired
 	private FlightResourceAssembler flightAssembler;
-	
+
 	@GetMapping
 	public ResponseEntity<?> findAllFlights() {
 		List<Resource<Flight>> flights = flightService.findAllFlights()
@@ -55,13 +54,13 @@ public class FlightController {
 														.collect(Collectors.toList());
 		return new ResponseEntity<>(flights, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{flightId}")
 	public ResponseEntity<?> findFlightById(@PathVariable("flightId") int flightId) {
 		Flight flight = flightService.findFlightById(flightId);
 		Resource<Flight> flightResource = flightAssembler.toResource(flight);
 		return new ResponseEntity<>(flightResource, HttpStatus.OK);
-	
+
 	}
 	// Q1
 	@GetMapping("/search")
@@ -69,7 +68,7 @@ public class FlightController {
 			@RequestParam int origin, @RequestParam int destination,
 			@RequestParam String outboundDate,
 			@RequestParam String returnDate,
-			@RequestParam boolean roundTrip, 
+			@RequestParam boolean roundTrip,
 			@RequestParam int totalPassenger)
 	{
 		Airport originA = airportService.findAirpoirtById(origin).orElse(null);
@@ -78,14 +77,6 @@ public class FlightController {
 
 		return flights;
 	}
-//
-//	@GetMapping("/test")
-//	public Agency user(Principal principal)
-//	{
-//		Agency agency = agencyRepository.findByUsername(principal.getName());
-//		// System.out.println("Agencia en el controlador: " + agency);
-//		return agency;
-//	}
 
 	// Q2
 	@GetMapping("/alternatives")
@@ -97,27 +88,30 @@ public class FlightController {
 
 	// Q3
 	@GetMapping("/status")
-	public List<Flight> findStatusFlights(@PathVariable("agencyId") int agencyId){
+	public List<Flight> findStatusFlights(Principal principal) {
 
 //		if(result.hasErrors()) {
 //			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //		}
+		Agency agency = agencyRepository.findByUsername(principal.getName());
 
-		List<Flight> flightStatus = reservationService.findStatusReservation(agencyId);
+		List<Flight> flightStatus = reservationService.findStatusReservation(agency.getId());
 //		return new ResponseEntity<>(flightStatus, HttpStatus.CREATED);
 		return flightStatus;
 	}
 
 	@GetMapping("/{flightId}/tickets")
-	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId,
+	public List<ReservationPassenger> getFlightBoardingTickets(Principal principal,
 			@PathVariable("flightId") int flightId) {
 
-		return reservationService.getFlightBoardingTickets(flightId, agencyId);
+		Agency agency = agencyRepository.findByUsername(principal.getName());
+
+		return reservationService.getFlightBoardingTickets(flightId, agency.getId());
 	}
 
 	// Q5.1
 	@PutMapping("/{flightId}/cancel")
-	public ResponseEntity<Flight> cancelFlight(@PathVariable("agencyId") int agencyId,
+	public ResponseEntity<Flight> cancelFlight(Principal principal,
 			@PathVariable("flightId") int flightId) {
 
 		Flight cancelledFlight = flightService.updateReservation(flightId);

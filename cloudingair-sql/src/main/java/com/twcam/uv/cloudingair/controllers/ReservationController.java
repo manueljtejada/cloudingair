@@ -33,7 +33,7 @@ import com.twcam.uv.cloudingair.repository.AgencyRepository;
 import com.twcam.uv.cloudingair.service.ReservationService;
 
 @RestController
-@RequestMapping("/api/{agencyId}/reservations")
+@RequestMapping("/api/reservations")
 public class ReservationController {
 
 	@Autowired
@@ -83,21 +83,15 @@ public class ReservationController {
 
 
 	@GetMapping("/{reservationId}/tickets")
-	public List<ReservationPassenger> getBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("reservationId") int reservationId, Principal principal) {
+	public List<ReservationPassenger> getBoardingTickets(Principal principal, @PathVariable("reservationId") int reservationId) {
 		// Solo permitir acceso para la agencia que realizo la reserva
 		Agency agency = agencyRepository.findByUsername(principal.getName());
 		return reservationService.getBoardingTicketList(reservationId, agency);
 	}
 
-
-	@GetMapping("/flights/{flightId}/tickets")
-	public List<ReservationPassenger> getFlightBoardingTickets(@PathVariable("agencyId") int agencyId, @PathVariable("flightId") int flightId) {
-		return reservationService.getFlightBoardingTickets(flightId, agencyId);
-	}
-
 	// Q5.2
-	@PutMapping("/reservations/{reservationId}/tickets/{ticketId}")
-	public ResponseEntity<ReservationPassenger> changeTicket(@PathVariable("agencyId") int agencyId,
+	@PutMapping("/{reservationId}/tickets/{ticketId}")
+	public ResponseEntity<ReservationPassenger> changeTicket(Principal principal,
 											@PathVariable("reservationId") int reservationId,
 											@PathVariable("ticketId") int ticketId,
 											@RequestBody Passenger newPassenger) {

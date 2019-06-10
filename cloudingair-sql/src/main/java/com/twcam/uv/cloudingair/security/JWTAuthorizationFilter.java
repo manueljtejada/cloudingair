@@ -56,7 +56,6 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 						.getSubject();
 
 			System.out.println("Usuario del filtro: " + user);
-			System.out.println("FILTROOOOOO");
 
 			// Agency agency = agencyRepository.findByUserName(user);
 			// System.out.println("Agencia del filtro: " + agency);

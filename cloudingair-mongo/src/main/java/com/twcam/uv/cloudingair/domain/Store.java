@@ -14,9 +14,12 @@ public class Store {
   @Id
   private ObjectId id;
 
+  private int airportId;
+
   private String name;
 
-  public Store(String name) {
+  public Store(String name, int airportId) {
     this.name = name;
+    this.airportId = airportId;
   }
 }

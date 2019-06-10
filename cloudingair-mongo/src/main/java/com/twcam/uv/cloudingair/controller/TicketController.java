@@ -20,7 +20,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/api/tickets")
+@RequestMapping("/register/tickets")
 public class TicketController {
   @Autowired
   TicketService service;
@@ -36,8 +36,8 @@ public class TicketController {
   }
 
   @PutMapping("/{ticketId}/security")
-  public Mono<Ticket> registerSecurityCheck(@PathVariable int ticketId, @RequestBody SecurityCheck securityCheck) {
-    return service.registerSecurityCheck(ticketId, securityCheck);
+  public Mono<Ticket> registerSecurityCheck(@PathVariable int ticketId) {
+    return service.registerSecurityCheck(ticketId);
   }
 
   @PutMapping("/{ticketId}/boarding")

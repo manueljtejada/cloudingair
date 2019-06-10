@@ -1,0 +1,90 @@
+version: '3'
+
+services:
+  reverseproxy:
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile
+    image: twcammaster.uv.es/proyceto-6-reverseproxy:latest
+    ports:
+      - "80:80"
+    networks:
+      - cloudingair-network
+    depends_on:
+      - discovery
+      - cloudingairsql
+      - cloudingairmongo
+
+  cloudingairsql:
+    build:
+      context: ./cloudingair-sql
+      dockerfile: Dockerfile
+    image: twcammaster.uv.es/proyecto-6-cloudingairsql:latest
+    expose:
+      - "8080"
+    networks:
+      - cloudingair-network
+    depends_on:
+      - discovery
+      - dbmysql
+    environment:
+      - DATABASE_HOST=dbmysql
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=cloudingair
+      - DATABASE_PORT=3306
+
+  cloudingairmongo:
+    build:
+      context: ./cloudingair-mongo
+      dockerfile: Dockerfile
+    image: twcammaster.uv.es/proyecto-6-cloudingairmongo:latest
+    expose:
+      - "8081"
+    networks:
+      - cloudingair-network
+    depends_on:
+      - discovery
+      - dbmongo
+
+  discovery:
+    build:
+      context: ./discovery-server
+      dockerfile: Dockerfile
+    image: twcammaster.uv.es/proyecto-6-discovery:latest
+    expose:
+      - "8761"
+    networks:
+      - cloudingair-network
+
+  dbmysql:
+    image: mysql:5.7
+    expose:
+      - "3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - cloudingair-network
+    command: --max_allowed_packet=32505856
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=cloudingair
+      - MYSQL_PASSWORD=root
+    restart: always
+
+  dbmongo:
+    image: mongo
+    ports:
+      - "27018:27017"
+    networks:
+      - cloudingair-network
+    volumes:
+      - mongodata:/data/db
+
+networks:
+  cloudingair-network:
+    external:
+      name: cloudingair-network
+volumes:
+  mysqldata:
+  mongodata:
