@@ -31,6 +31,7 @@ public interface FlightRepository extends JpaRepository<Flight, Integer> {
     @Param("date") String date
   );
 
+  /* Q2 */
   public List<Flight> findByDepartureDateBetweenOrderByPrice(Date date1, Date date2);
 
   /* Q5.1 */

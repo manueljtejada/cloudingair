@@ -49,7 +49,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests().antMatchers(HttpMethod.POST, LOGIN_URL).permitAll()
 			.antMatchers(HttpMethod.GET, "/api/flights").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/flights/search").permitAll()
-			.antMatchers(HttpMethod.GET, "/api/flights/search/alternatives").permitAll()
+			.antMatchers(HttpMethod.GET, "/api/flights/alternatives").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/tickets/**").permitAll()
 			.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
