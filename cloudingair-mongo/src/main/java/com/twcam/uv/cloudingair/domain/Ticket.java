@@ -17,14 +17,17 @@ public class Ticket {
   @Id
   private int id;
 
+  private int airportId;
+
   private SecurityCheck securityCheck;
 
   private Boarding boarding;
 
   private List<Purchase> purchases;
 
-  public Ticket(int id) {
+  public Ticket(int id, int airportId) {
     this.id = id;
+    this.airportId = airportId;
   }
 
   public Ticket(SecurityCheck securityCheck, Boarding boarding, List<Purchase> purchases) {
